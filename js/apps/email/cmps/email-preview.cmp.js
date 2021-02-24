@@ -4,29 +4,43 @@ export default {
     props: ['email'],
     template: `
             <section class="email-preview-container flex">
-              <div class="name-circle"></div>
+              <div class="name-circle flex align-center justify-center" :style="setBackground">{{nameInitials}}</div>
               <div class="email-preview-details flex column space-between">
-                <h4>{{email.sender}}</h4>
-                <h4>{{email.subject}}</h4>
+                <h4 :class="toggleBold">{{email.sender}}</h4>
+                <h4 :class="toggleBold">{{email.subject}}</h4>
                 <p v-if="!isLongText">{{email.body}}</p>
-                <long-text v-else-if="isLongText" :txt="email.body" :length="40"/>
+                <long-text v-else-if="isLongText" :txt="email.body" :length="length"/>
               </div>
-              <p class="email-time">{{formattedTime}}</p>
+              <p class="email-time" :class="toggleBold">{{formattedTime}}</p>
             </section>
         `,
     data() {
       return {
         isLongText: false,
+        length: 40
       };
     },
     methods: {
       checkTxtLength() {
-        this.isLongText = (this.email.body.length > 40) ? true : false;
+        this.isLongText = (this.email.body.length > this.length) ? true : false;
       },
     },
     computed: {
       formattedTime() {
         return new Date(this.email.sentAt).toLocaleTimeString();
+      },
+      toggleBold() {
+        return (this.email.isRead) ? 'bold' : 'notBold';
+      },
+      setBackground() {
+        return {backgroundColor: this.email.color};
+      },
+      nameInitials() {
+        const name = this.email.sender;
+        const firstNameLetter = name.charAt(0).toUpperCase();
+        if (!name.includes(' ')) return firstNameLetter;
+        else {const lastNameLetter = name.substr(name.indexOf(' ')+1, 1).toUpperCase();
+        return `${firstNameLetter}${lastNameLetter}`};
       }
     },
     created() {

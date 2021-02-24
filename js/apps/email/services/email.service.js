@@ -5,38 +5,42 @@ const EMAIL_INBOX_KEY = 'email-inbox';
 var gInbox = [
       {
         id: utilService.getRandId(),
-        sender: 'Shmulik',
+        sender: 'Shmulik Cochav',
         subject: 'Hi There',
         body: 'How are you? Have a nice day',
         isRead: false,
         sentAt: Date.now(),
+        color: utilService.getRandomColor(),
         folders: ['inbox', 'starred']
       },
       {
         id: utilService.getRandId(),
-        sender: 'Dana',
+        sender: 'Dana Levi',
         subject: 'Whatsup?',
         body: 'Hi there how are you today? I was wondering if you can please take the pages and show them to your boss, that will be amazing! thanks a lot! see you soon!',
         isRead: true,
         sentAt: Date.now(),
+        color: utilService.getRandomColor(),
         folders: ['inbox']
       },
       {
         id: utilService.getRandId(),
-        sender: 'Yoav',
+        sender: 'Yoav Tal',
         subject: 'Whatsup?',
         body: 'Let me know when is the meeting',
         isRead: false,
         sentAt: Date.now(),
+        color: utilService.getRandomColor(),
         folders: ['sent', 'starred']
       },
       {
         id: utilService.getRandId(),
-        sender: 'Sharon',
+        sender: 'Sharon Guttman',
         subject: 'Whatsup?',
         body: 'Let me know when is the meeting I will try to get there on time! If not please contact them and let them know.',
         isRead: true,
         sentAt: Date.now(),
+        color: utilService.getRandomColor(),
         folders: ['trash']
       },
       {
@@ -45,34 +49,38 @@ var gInbox = [
         subject: 'Hi There',
         body: 'How are you? Have a nice day',
         isRead: false,
-        sentAt: 1551133930594,
+        sentAt: Date.now(),
+        color: utilService.getRandomColor(),
         folders: ['inbox', 'starred']
       },
       {
         id: utilService.getRandId(),
-        sender: 'Or',
+        sender: 'Or Rezen',
         subject: 'Whatsup?',
         body: 'Let me know when is the meeting',
         isRead: true,
-        sentAt: 1551133934895,
+        sentAt: Date.now(),
+        color: utilService.getRandomColor(),
         folders: ['inbox']
       },
       {
         id: utilService.getRandId(),
-        sender: 'Ofek',
+        sender: 'Ofek Shavit',
         subject: 'Whatsup?',
         body: 'Let me know when is the meeting',
         isRead: false,
-        sentAt: 1551133934895,
+        sentAt: Date.now(),
+        color: utilService.getRandomColor(),
         folders: ['sent', 'starred']
       },
       {
         id: utilService.getRandId(),
-        sender: 'Mika',
+        sender: 'Mika Eiluk',
         subject: 'Whatsup?',
         body: 'Hi there how are you today? I was wondering if you can please take the pages and show them to your boss, that will be amazing! thanks a lot! see you soon!',
         isRead: true,
-        sentAt: 1551133934895,
+        sentAt: Date.now(),
+        color: utilService.getRandomColor(),
         folders: ['trash']
       }
 ];
