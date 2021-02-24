@@ -1,3 +1,8 @@
 * {
   box-sizing: border-box;
 }
+
+.email-list-container {
+  margin: 20px auto 20px auto;
+  width: 75%;
+}

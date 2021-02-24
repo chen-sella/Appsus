@@ -5,7 +5,7 @@ import emailSideNav from '../cmps/email-side-nav.cmp.js';
 export default {
   name: 'emailApp',
   template: `
-          <section class="email-app-container flex">
+          <section class="email-app-container flex app-main">
             <email-side-nav @filtered="setFilter"/>
             <email-list v-if="emails" :emails="mailsToShow"/>
           </section>  
