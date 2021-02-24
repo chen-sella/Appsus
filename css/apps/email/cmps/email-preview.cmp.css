@@ -19,6 +19,7 @@
 }
 
 .email-preview-container .email-preview-details {
+  flex-grow: 1;
   margin-left: 10px;
 }
 
@@ -29,4 +30,8 @@
 
 .email-preview-container p {
   margin: 0;
+}
+
+.email-preview-container .email-time {
+  align-self: flex-start;
 }

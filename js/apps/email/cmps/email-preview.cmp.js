@@ -9,13 +9,18 @@ export default {
                 <h4>{{email.subject}}</h4>
                 <p>{{email.body}}</p>
               </div>
+              <p class="email-time">{{formattedTime}}</p>
             </section>
         `,
     data() {
       return {};
     },
     methods: {},
-    computed: {},
+    computed: {
+      formattedTime() {
+        return new Date().toLocaleTimeString();
+      }
+    },
     components: {},
   };
   
