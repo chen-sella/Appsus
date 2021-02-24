@@ -9,16 +9,16 @@ const NOTE_KEY = 'notesDB';
 
 var gNotes = [
   {
-    type: 'NoteTxt',
+    type: 'noteTxt',
     isPinned: true,
     info: {
       txt: 'Fullstack Me Baby!',
     },
   },
   {
-    type: 'NoteImg',
+    type: 'noteImg',
     info: {
-      url: 'http://some-img/me',
+      url: '/img/Layer 2@1X.png',
       title: 'Me playing Mi',
     },
     style: {
@@ -26,7 +26,7 @@ var gNotes = [
     },
   },
   {
-    type: 'NoteTodos',
+    type: 'noteTodos',
     info: {
       label: 'How was it:',
       todos: [
@@ -38,12 +38,14 @@ var gNotes = [
 ];
 
 function getNotes() {
-  const notesFromStorage = storageService.query(NOTE_KEY);
-  if (notesFromStorage === []) {
-    console.log('saving for the first time...');
-    utilService.saveToStorage(NOTE_KEY, gNotes);
-    notesFromStorage = utilService.loadFromStorage(NOTE_KEY);
-  }
-  console.log(notesFromStorage);
-  return notesFromStorage;
+  return storageService.query(NOTE_KEY).then((entities) => {
+    console.log(entities);
+    if (entities.length === 0) {
+      console.log('saving for the first time...');
+      utilService.saveToStorage(NOTE_KEY, gNotes);
+      entities = utilService.loadFromStorage(NOTE_KEY);
+    }
+    console.log(entities);
+    return Promise.resolve(entities);
+  });
 }

@@ -1,23 +1,28 @@
-import {noteService} from '../services/note.service.js'
+import noteTxt from '../cmps/note-types/note-txt.cmp.js'
+import noteTodos from '../cmps/note-types/note-todos.cmp.js'
+import noteImg from '../cmps/note-types/note-img.cmp.js'
+import noteVideo from '../cmps/note-types/note-video.cmp.js'
 
 export default {
-  name: '',
+  name: 'notePreview',
+  props:['note'],
   template: `
-        <section v-if="noteList" class="note-preview">
-          <component></component>
+        <section class="note-preview">
+          <component :is="note.type" :info="note.info"></component>
         </section>
             
         `,
   data() {
     return {
-      noteList: null,
     };
   },
   methods: {},
   computed: {},
-  created() {
-    this.noteList = noteService.getNotes();
-    console.log(this.noteList);
+  
+  components: {
+    noteTxt,
+    noteImg,
+    noteTodos,
+    noteVideo,
   },
-  components: {},
 };

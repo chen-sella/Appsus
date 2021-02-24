@@ -1,5 +1,6 @@
 export default {
-    name: '',
+    name: 'noteTxt',
+    props:['info'],
     template: `
             
         `,

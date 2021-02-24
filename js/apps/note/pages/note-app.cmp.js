@@ -1,10 +1,10 @@
-import notePreview from '../cmps/note-preview.cmp.js'
+import noteList from '../cmps/note-list.cmp.js';
 
 export default {
-  name: '',
+  name: 'noteApp',
   template: `
       <section class="note-app">
-        <note-preview></note-preview>
+        <note-list></note-list>
 
       </section>
               
@@ -14,5 +14,7 @@ export default {
   },
   methods: {},
   computed: {},
-  components: {},
+  components: {
+    noteList
+  },
 };

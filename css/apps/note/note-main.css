@@ -3,6 +3,7 @@
 @import './cmps/note-create.cmp.css';
 @import './cmps/note-img.cmp.css';
 @import './cmps/note-preview.cmp.css';
+@import './cmps/note-list.cmp.css';
 @import './cmps/note-search.cmp.css';
 @import './cmps/note-todos.cmp.css';
 @import './cmps/note-txt.cmp.css';
