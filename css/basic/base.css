@@ -4,7 +4,6 @@
 
 html {
     /* font-family: play, serif; */
-    color: #626262;
     line-height: 1.714;
 }
 
@@ -30,8 +29,13 @@ img {
 
 a {
     text-decoration: none;
-    /* color: #afafaf;
-    border-bottom: 1px solid #afafaf; */
+    color: black;
+}
+
+router-link{
+    text-decoration: none;
+    color: black;
+    
 }
 
 a:hover {

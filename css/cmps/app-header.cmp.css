@@ -1,3 +1,13 @@
-* {
-  box-sizing: border-box;
+
+.app-header {
+  background-color: #f8cb66;
 }
+
+.header-content-container {
+  height: 10vh;
+}
+
+.header-content-container .nav-link {
+  margin-inline-start: 20px;
+}
+

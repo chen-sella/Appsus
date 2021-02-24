@@ -17,7 +17,7 @@ const routes = [
   //     component: about
   // },
   {
-      path: '/kepper',
+      path: '/kepp',
       component: noteApp
   },
   {
