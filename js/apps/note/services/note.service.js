@@ -3,12 +3,14 @@ import { storageService } from '../../../services/async.storage.service.js';
 
 export const noteService = {
   getNotes,
+  updateColor
 };
 
 const NOTE_KEY = 'notesDB';
 
 var gNotes = [
   {
+    id:utilService.getRandId(4),
     type: 'noteTxt',
     isPinned: true,
     info: {
@@ -16,6 +18,7 @@ var gNotes = [
     },
   },
   {
+    id:utilService.getRandId(4),
     type: 'noteImg',
     info: {
       url: '/img/Layer 2@1X.png',
@@ -26,6 +29,7 @@ var gNotes = [
     },
   },
   {
+    id:utilService.getRandId(4),
     type: 'noteTodos',
     info: {
       label: 'Chores for next week:',
@@ -56,4 +60,16 @@ function getNotes() {
     console.log(entities);
     return Promise.resolve(entities);
   });
+}
+
+function getNoteById(noteId){
+  return storageService.get(NOTE_KEY, noteId);
+}
+
+function updateColor(color, noteId){
+  return getNoteById(noteId).then((note) => {
+    note.style.backgroundColor = color;
+    return storageService.put(NOTE_KEY, note);
+  });
+
 }

@@ -6,7 +6,7 @@ export default {
   template: `
         <ul v-if="noteList" class="note-list clean-list">
             <li v-for="note in noteList">
-                <note-preview :note="note"></note-preview>
+                <note-preview :note="note" @changeColor="changeColor"></note-preview>
             </li>
 
         </ul>
@@ -17,7 +17,13 @@ export default {
       noteList: null,
     };
   },
-  methods: {},
+  methods: {
+    changeColor(color, noteId) {
+      noteService.updateColor(color, noteId).then((note) => {
+        console.log(note);
+      });
+    },
+  },
   computed: {},
   created() {
     noteService.getNotes().then((notes) => {
