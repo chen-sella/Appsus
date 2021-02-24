@@ -6,7 +6,7 @@ export const noteService = {
   updateColor,
   getColors,
   onImgInput,
-  newNote
+  newNote,
 };
 
 const NOTE_KEY = 'notesDB';
@@ -43,13 +43,28 @@ var gNotes = [
       ],
     },
   },
-  // {
-  //   type: 'noteVideo',
-  //   info: {
-  //     url: '/img/html5.gif',
-  //     title: 'My Perfect Vacation',
-  //   },
-  // },
+  {
+    id: utilService.getRandId(4),
+    type: 'noteImg',
+    info: {
+      url: '/img/Layer 4@1X.png',
+      title: 'Amaxing Times',
+    },
+    style: { backgroundColor: 'white', borderColor: '#8080809e' },
+  },
+  {
+    id: utilService.getRandId(4),
+    type: 'noteTodos',
+    info: {
+      label: 'Chores for Leetal:',
+      todos: [
+        { txt: 'Take put the dogs', doneAt: 187111111 },
+        { txt: 'Do not spill coffe', doneAt: null },
+        { txt: 'Rest', doneAt: null },
+      ],
+    },
+    style: { backgroundColor: 'white', borderColor: '#8080809e' },
+  },
 ];
 
 var gColors = [
@@ -137,5 +152,5 @@ function newNote(type) {
       title: '',
     };
   }
-  return {info};
+  return { info };
 }
