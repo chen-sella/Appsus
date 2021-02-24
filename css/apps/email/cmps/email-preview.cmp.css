@@ -1,3 +1,32 @@
 * {
   box-sizing: border-box;
 }
+
+.email-preview-container {
+  width: 700px;
+  height: 100px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.email-preview-container .name-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: rgb(117, 221, 190);
+}
+
+.email-preview-container .email-preview-details {
+  margin-left: 10px;
+}
+
+.email-preview-container h4 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.email-preview-container p {
+  margin: 0;
+}

@@ -4,6 +4,7 @@
 @import './cmps/email-list.cmp.css';
 @import './cmps/email-preview.cmp.css';
 @import './cmps/email-status.cmp.css';
+@import './cmps/email-side-nav.cmp.css';
 
 /* PAGES */
 @import './pages/email-app.cmp.css';
