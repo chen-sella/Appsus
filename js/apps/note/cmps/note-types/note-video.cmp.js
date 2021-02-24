@@ -1,13 +1,14 @@
 export default {
-    name: '',
-    template: `
+  props:['info'],
+  name: 'noteVideo',
+  template: `
+      <img :src="info.url">
             
         `,
-    data() {
-      return {};
-    },
-    methods: {},
-    computed: {},
-    components: {},
-  };
-  
+  data() {
+    return {};
+  },
+  methods: {},
+  computed: {},
+  components: {},
+};

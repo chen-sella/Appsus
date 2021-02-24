@@ -36,6 +36,13 @@ var gNotes = [
       ],
     },
   },
+  // {
+  //   type: 'noteVideo',
+  //   info: {
+  //     url: '/img/html5.gif',
+  //     title: 'My Perfect Vacation',
+  //   },
+  // },
 ];
 
 function getNotes() {
