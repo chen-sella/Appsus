@@ -10,14 +10,34 @@ var gInbox = [
         body: 'How are you? Have a nice day',
         isRead: false,
         sentAt: 1551133930594,
+        folders: ['inbox', 'starred']
       },
       {
         id: '56SO98',
         sender: 'Dana',
         subject: 'Whatsup?',
         body: 'Let me know when is the meeting',
+        isRead: true,
+        sentAt: 1551133934895,
+        folders: ['inbox']
+      },
+      {
+        id: '56SO04',
+        sender: 'Yoav',
+        subject: 'Whatsup?',
+        body: 'Let me know when is the meeting',
         isRead: false,
         sentAt: 1551133934895,
+        folders: ['sent', 'starred']
+      },
+      {
+        id: '56SO95',
+        sender: 'Sharon',
+        subject: 'Whatsup?',
+        body: 'Let me know when is the meeting',
+        isRead: true,
+        sentAt: 1551133934895,
+        folders: ['trash']
       }
 ];
 
