@@ -3,14 +3,14 @@ import { storageService } from '../../../services/async.storage.service.js';
 
 export const noteService = {
   getNotes,
-  updateColor
+  updateColor,
 };
 
 const NOTE_KEY = 'notesDB';
 
 var gNotes = [
   {
-    id:utilService.getRandId(4),
+    id: utilService.getRandId(4),
     type: 'noteTxt',
     isPinned: true,
     info: {
@@ -18,7 +18,7 @@ var gNotes = [
     },
   },
   {
-    id:utilService.getRandId(4),
+    id: utilService.getRandId(4),
     type: 'noteImg',
     info: {
       url: '/img/Layer 2@1X.png',
@@ -29,14 +29,14 @@ var gNotes = [
     },
   },
   {
-    id:utilService.getRandId(4),
+    id: utilService.getRandId(4),
     type: 'noteTodos',
     info: {
       label: 'Chores for next week:',
       todos: [
         { txt: 'Buy new clothes', doneAt: null },
         { txt: 'Pay private trainer', doneAt: 187111111 },
-        { txt: 'Do Laundry', doneAt: null}
+        { txt: 'Do Laundry', doneAt: null },
       ],
     },
   },
@@ -62,14 +62,19 @@ function getNotes() {
   });
 }
 
-function getNoteById(noteId){
+function getNoteById(noteId) {
   return storageService.get(NOTE_KEY, noteId);
 }
 
-function updateColor(color, noteId){
+function updateColor(color, noteId) {
+  console.log('coloris:',color);
   return getNoteById(noteId).then((note) => {
-    note.style.backgroundColor = color;
+    if (note.style) {
+      note.style.backgroundColor = color.backgroundColor;
+      note.style.borderColor = color.borderColor;
+    } else {
+      note.style = color;
+    }
     return storageService.put(NOTE_KEY, note);
   });
-
 }

@@ -27,7 +27,7 @@ export default {
       if (this.note.style) {
         return {
           backgroundColor: this.note.style.backgroundColor,
-          borderColor: this.note.style.backgroundColor,
+          borderColor: this.note.style.borderColor,
         };
       }
       return { backgroundColor: 'white', borderColor: '#8080809e' };

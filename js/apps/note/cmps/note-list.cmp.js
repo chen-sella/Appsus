@@ -21,6 +21,7 @@ export default {
     changeColor(color, noteId) {
       noteService.updateColor(color, noteId).then((note) => {
         console.log(note);
+        noteService.getNotes().then((notes)=>this.noteList = notes)
       });
     },
   },
