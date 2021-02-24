@@ -1,3 +1,24 @@
-* {
-  box-sizing: border-box;
+.note-update-list{
+  justify-content: space-evenly;
+}
+
+.palette-icon{
+  position: relative;
+}
+
+.color-palette{
+  position: absolute;
+  top: -150px;
+  flex-wrap: wrap;
+  width: 130px;
+  background-color: white;
+  border: 1px solid rgb(170, 166, 166);
+  border-radius: 10px;
+}
+
+.color-palette .palette-color{
+  width: 30px;
+  height: 30px;
+  margin: 3px;
+  border-radius: 50%;
 }

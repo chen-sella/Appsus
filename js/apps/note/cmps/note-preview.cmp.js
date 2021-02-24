@@ -2,6 +2,7 @@ import noteTxt from '../cmps/note-types/note-txt.cmp.js';
 import noteTodos from '../cmps/note-types/note-todos.cmp.js';
 import noteImg from '../cmps/note-types/note-img.cmp.js';
 import noteVideo from '../cmps/note-types/note-video.cmp.js';
+import noteUpdate from '../cmps/note-update.cmp.js'
 
 export default {
   name: 'notePreview',
@@ -9,6 +10,7 @@ export default {
   template: `
         <section class="note-preview" :style="setColor">
           <component :is="note.type" :info="note.info"></component>
+          <note-update :note="note"></note-update>
         </section>
             
         `,
@@ -30,5 +32,6 @@ export default {
     noteImg,
     noteTodos,
     noteVideo,
+    noteUpdate
   },
 };
