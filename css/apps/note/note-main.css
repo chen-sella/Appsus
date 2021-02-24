@@ -1,0 +1,13 @@
+
+/* CMPS */
+@import './cmps/note-create.cmp.css';
+@import './cmps/note-img.cmp.css';
+@import './cmps/note-preview.cmp.css';
+@import './cmps/note-search.cmp.css';
+@import './cmps/note-todos.cmp.css';
+@import './cmps/note-txt.cmp.css';
+@import './cmps/note-update.cmp.css';
+@import './cmps/note-video.cmp.css';
+
+/* PAGES */
+@import './pages/note-app.cmp.css';
