@@ -43,9 +43,11 @@ function createNewEmail() {
 function query() {
     let inbox = storageService.query(EMAIL_INBOX_KEY);
     if (!inbox || !inbox.length) {
-        inbox = gInbox;
+        // inbox = gInbox;
         utilService.saveToStorage(EMAIL_INBOX_KEY, gInbox);
+        inbox = storageService.query(EMAIL_INBOX_KEY);
     }
+    console.log('getting inbox from storage:',inbox);
   return inbox;
 }
 

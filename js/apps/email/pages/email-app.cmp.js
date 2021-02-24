@@ -5,7 +5,7 @@ export default {
   name: '',
   template: `
           <section>
-            <email-list />
+            <email-list :emails="emails"/>
           </section>  
         `,
   data() {
@@ -23,4 +23,7 @@ export default {
   components: {
     emailList,
   },
+  created() {
+    this.loadEmails();
+  }
 };
