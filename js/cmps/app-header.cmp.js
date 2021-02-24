@@ -5,6 +5,7 @@ export default {
           <div class="header-content-container main-container">
               <div class="logo">
                   <h1>Appsus</h1>
+                  <h1>New header</h1>
               </div>
               <nav>
                   <!-- <router-link class="nav-link" to="/">Home</router-link>
