@@ -23,7 +23,7 @@ export default {
       return this.txt;
     },
     btnText() {
-      return this.isLongText ? 'Read less' : 'Read more';
+      return this.isLongText ? '-' : '+';
     },
   },
 };

@@ -4,8 +4,44 @@ import { storageService } from '../../../services/async.storage.service.js';
 const EMAIL_INBOX_KEY = 'email-inbox';
 var gInbox = [
       {
-        id: '12CB35',
+        id: utilService.getRandId(),
         sender: 'Shmulik',
+        subject: 'Hi There',
+        body: 'How are you? Have a nice day',
+        isRead: false,
+        sentAt: Date.now(),
+        folders: ['inbox', 'starred']
+      },
+      {
+        id: utilService.getRandId(),
+        sender: 'Dana',
+        subject: 'Whatsup?',
+        body: 'Hi there how are you today? I was wondering if you can please take the pages and show them to your boss, that will be amazing! thanks a lot! see you soon!',
+        isRead: true,
+        sentAt: Date.now(),
+        folders: ['inbox']
+      },
+      {
+        id: utilService.getRandId(),
+        sender: 'Yoav',
+        subject: 'Whatsup?',
+        body: 'Let me know when is the meeting',
+        isRead: false,
+        sentAt: Date.now(),
+        folders: ['sent', 'starred']
+      },
+      {
+        id: utilService.getRandId(),
+        sender: 'Sharon',
+        subject: 'Whatsup?',
+        body: 'Let me know when is the meeting I will try to get there on time! If not please contact them and let them know.',
+        isRead: true,
+        sentAt: Date.now(),
+        folders: ['trash']
+      },
+      {
+        id: utilService.getRandId(),
+        sender: 'Shiri',
         subject: 'Hi There',
         body: 'How are you? Have a nice day',
         isRead: false,
@@ -13,8 +49,8 @@ var gInbox = [
         folders: ['inbox', 'starred']
       },
       {
-        id: '56SO98',
-        sender: 'Dana',
+        id: utilService.getRandId(),
+        sender: 'Or',
         subject: 'Whatsup?',
         body: 'Let me know when is the meeting',
         isRead: true,
@@ -22,8 +58,8 @@ var gInbox = [
         folders: ['inbox']
       },
       {
-        id: '56SO04',
-        sender: 'Yoav',
+        id: utilService.getRandId(),
+        sender: 'Ofek',
         subject: 'Whatsup?',
         body: 'Let me know when is the meeting',
         isRead: false,
@@ -31,10 +67,10 @@ var gInbox = [
         folders: ['sent', 'starred']
       },
       {
-        id: '56SO95',
-        sender: 'Sharon',
+        id: utilService.getRandId(),
+        sender: 'Mika',
         subject: 'Whatsup?',
-        body: 'Let me know when is the meeting',
+        body: 'Hi there how are you today? I was wondering if you can please take the pages and show them to your boss, that will be amazing! thanks a lot! see you soon!',
         isRead: true,
         sentAt: 1551133934895,
         folders: ['trash']

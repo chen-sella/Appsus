@@ -3,8 +3,8 @@
 }
 
 .email-preview-container {
-  width: 700px;
-  height: 100px;
+  width: 100%;
+  min-height: 100px;
   border: 1px solid grey;
   border-radius: 10px;
   padding: 10px;
@@ -20,6 +20,7 @@
 
 .email-preview-container .email-preview-details {
   flex-grow: 1;
+  max-width: 70%;
   margin-left: 10px;
 }
 

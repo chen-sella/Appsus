@@ -1,3 +1,4 @@
+import longText from '../../../cmps/long-text.cmp.js';
 export default {
     name: 'emailPreview',
     props: ['email'],
@@ -7,20 +8,32 @@ export default {
               <div class="email-preview-details flex column space-between">
                 <h4>{{email.sender}}</h4>
                 <h4>{{email.subject}}</h4>
-                <p>{{email.body}}</p>
+                <p v-if="!isLongText">{{email.body}}</p>
+                <long-text v-else-if="isLongText" :txt="email.body" :length="40"/>
               </div>
               <p class="email-time">{{formattedTime}}</p>
             </section>
         `,
     data() {
-      return {};
+      return {
+        isLongText: false,
+      };
     },
-    methods: {},
+    methods: {
+      checkTxtLength() {
+        this.isLongText = (this.email.body.length > 40) ? true : false;
+      },
+    },
     computed: {
       formattedTime() {
-        return new Date().toLocaleTimeString();
+        return new Date(this.email.sentAt).toLocaleTimeString();
       }
     },
-    components: {},
+    created() {
+      this.checkTxtLength();
+    },
+    components: {
+      longText,
+    },
   };
   
