@@ -6,16 +6,15 @@ export default {
   template: `
         <ul v-if="noteList" class="note-list clean-list">
             <li v-for="note in noteList">
-                <note-preview :note="note" @changeColor="changeColor"></note-preview>
+                <note-preview :note="note" :colors="colors" @changeColor="changeColor" @uploadImg="uploadImg"></note-preview>
             </li>
-
         </ul>
-            
         `,
   data() {
     return {
       noteList: null,
-    };
+      colors: null,
+    }
   },
   methods: {
     changeColor(color, noteId) {
@@ -24,9 +23,14 @@ export default {
         noteService.getNotes().then((notes)=>this.noteList = notes)
       });
     },
+    uploadImg(ev){
+      noteService.onImgInput(ev);
+    }
   },
   computed: {},
   created() {
+    this.colors = noteService.getColors();
+    console.log(this.colors);
     noteService.getNotes().then((notes) => {
       this.noteList = notes;
       console.log(this.noteList);

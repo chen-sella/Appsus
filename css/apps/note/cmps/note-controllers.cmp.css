@@ -2,6 +2,10 @@
   justify-content: space-evenly;
 }
 
+.note-update-list li{
+  cursor: pointer;
+}
+
 .palette-icon{
   position: relative;
 }
@@ -26,3 +30,6 @@
   cursor: pointer;
 }
 
+input[name="upload-file"]{
+  display: none;
+}

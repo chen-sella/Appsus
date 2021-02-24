@@ -4,6 +4,9 @@ import { storageService } from '../../../services/async.storage.service.js';
 export const noteService = {
   getNotes,
   updateColor,
+  getColors,
+  onImgInput,
+  newNote
 };
 
 const NOTE_KEY = 'notesDB';
@@ -49,6 +52,21 @@ var gNotes = [
   // },
 ];
 
+var gColors = [
+  { backgroundColor: '#F28B83', borderColor: '#F28B83' },
+  { backgroundColor: '#FCBC02', borderColor: '#FCBC02' },
+  { backgroundColor: '#FFF475', borderColor: '#FFF475' },
+  { backgroundColor: '#CCFF90', borderColor: '#CCFF90' },
+  { backgroundColor: '#A7FFEB', borderColor: '#A7FFEB' },
+  { backgroundColor: '#CBF0F8', borderColor: '#CBF0F8' },
+  { backgroundColor: '#AECBFA', borderColor: '#AECBFA' },
+  { backgroundColor: '#D7AEFB', borderColor: '#D7AEFB' },
+  { backgroundColor: '#FDCFE8', borderColor: '#FDCFE8' },
+  { backgroundColor: '#E6C9A8', borderColor: '#E6C9A8' },
+  { backgroundColor: '#E8EAED', borderColor: '#E8EAED' },
+  { backgroundColor: 'white', borderColor: '#8080809e' },
+];
+
 function getNotes() {
   return storageService.query(NOTE_KEY).then((entities) => {
     console.log(entities);
@@ -67,7 +85,7 @@ function getNoteById(noteId) {
 }
 
 function updateColor(color, noteId) {
-  console.log('coloris:',color);
+  console.log('coloris:', color);
   return getNoteById(noteId).then((note) => {
     if (note.style) {
       note.style.backgroundColor = color.backgroundColor;
@@ -77,4 +95,47 @@ function updateColor(color, noteId) {
     }
     return storageService.put(NOTE_KEY, note);
   });
+}
+
+function getColors() {
+  return gColors;
+}
+
+function onImgInput(ev) {
+  console.log(ev);
+  loadImageFromInput(ev, console.log('img'));
+}
+
+function loadImageFromInput(ev, onImageReady) {
+  var reader = new FileReader();
+
+  reader.onload = function (event) {
+    var img = new Image();
+    img.onload = onImageReady.bind(null, img);
+    img.src = event.target.result;
+    gImg = img;
+  };
+  reader.readAsDataURL(ev.target.files[0]);
+}
+
+function newNote(type) {
+  var info;
+  if (type === 'noteTxt') {
+    info = {
+      txt: '',
+    };
+  }
+  if (type === 'noteTodos') {
+    info = {
+      label: '',
+      todos: [],
+    };
+  }
+  if (type === 'noteImg') {
+    info = {
+      url: '',
+      title: '',
+    };
+  }
+  return {info};
 }
