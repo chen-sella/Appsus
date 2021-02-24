@@ -19,19 +19,20 @@ var gNotes = [
     type: 'noteImg',
     info: {
       url: '/img/Layer 2@1X.png',
-      title: 'Me playing Mi',
+      title: 'My Perfect Vacation',
     },
     style: {
-      backgroundColor: '#00d',
+      backgroundColor: '#F28B83',
     },
   },
   {
     type: 'noteTodos',
     info: {
-      label: 'How was it:',
+      label: 'Chores for next week:',
       todos: [
-        { txt: 'Do that', doneAt: null },
-        { txt: 'Do this', doneAt: 187111111 },
+        { txt: 'Buy new clothes', doneAt: null },
+        { txt: 'Pay private trainer', doneAt: 187111111 },
+        { txt: 'Do Laundry', doneAt: null}
       ],
     },
   },
