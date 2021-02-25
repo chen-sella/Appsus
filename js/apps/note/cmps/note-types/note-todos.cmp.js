@@ -5,9 +5,9 @@ export default {
   props: ['info', 'id'],
   template: `
       <section class="note-todos">
-        <h3 contenteditable="true" ref="txtTitle" @keyup.enter="updateTxt">{{info.title}}</h3>
+        <h3 contenteditable="true" ref="txtTitle" @keyup.esc="updateTxt">{{info.title}}</h3>
         <ul>
-          <li contenteditable="true" ref="txtList" v-for="todo in info.todos" :class="{marked: todo.doneAt}" @keyup.enter="updateTxt">{{todo.txt}}</li>
+          <li contenteditable="true" ref="txtList" v-for="todo in info.todos" :class="{marked: todo.doneAt}" @keyup.esc="updateTxt">{{todo.txt}}</li>
         </ul>
       </section>
 

@@ -5,7 +5,7 @@ export default {
   template: `
         <section class="note-create flex space-between">
           <div class="input-container flex column">
-            <input type="text" v-if="type" v-model="title" @keyup.enter="fillInfo" placeholder="Enter title">
+            <input type="text" v-if="type" v-model="title" @keyup.enter="fillInfo" placeholder="Enter title...">
             <input type="text" :placeholder="flaceHolder" v-model="txt" @keyup.enter="fillInfo">
           </div>
           <ul class="type-controllers clean-list flex">
