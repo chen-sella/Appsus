@@ -10,8 +10,8 @@ export const noteService = {
   newNote,
   postNote,
   deleteNote,
-  // getPinned,
   changePinnState,
+  updateTxt,
 };
 
 var gImg;
@@ -163,6 +163,15 @@ function deleteNote(noteId) {
 function changePinnState(noteId) {
   return getNoteById(noteId).then((note) => {
     note.isPinned = !note.isPinned;
+    return storageService.put(NOTE_KEY, note).then(() => {
+      return storageService.query(NOTE_KEY);
+    });
+  });
+}
+
+function updateTxt(txt, noteId) {
+  return getNoteById(noteId).then((note) => {
+    note.info.txt = txt;
     return storageService.put(NOTE_KEY, note).then(() => {
       return storageService.query(NOTE_KEY);
     });

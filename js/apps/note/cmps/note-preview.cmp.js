@@ -9,7 +9,7 @@ export default {
   props: ['note', 'colors'],
   template: `
         <section class="note-preview" :style="theme" ref="previewContainer">
-          <component :is="note.type" :info="note.info"></component>
+          <component :is="note.type" :info="note.info" :id="note.id"></component>
           <note-controls :note="note" :colors="colors" @colorPicked="changeColor" @pinned="pinnNote"></note-controls>
         </section>
         `,

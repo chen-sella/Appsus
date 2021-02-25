@@ -47,6 +47,9 @@ export default {
     pinnNote(noteId) {
       noteService.changePinnState(noteId).then((notes) => this.updateLists(notes));
     },
+    updateTxt(txt, noteId){
+      noteService.updateTxt(txt, noteId).then((notes)=>this.updateLists(notes));
+    }
   },
   computed: {},
   created() {
@@ -56,6 +59,11 @@ export default {
     });
   },
   mounted() {
+    eventBus.$on('updateTxt', (txt, noteId)=>{
+      console.log(txt);
+      console.log(noteId);
+      this.updateTxt(txt, noteId);
+    })
     eventBus.$on('makeAction', () => {
       console.log('msg was heard!');
       this.deleteNote(this.$route.params.noteId);
