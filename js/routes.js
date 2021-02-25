@@ -14,7 +14,7 @@ const routes = [
   //     component: about
   // },
   {
-    path: '/keep',
+    path: '/keep/:noteId?',
     component: noteApp,
   },
   {

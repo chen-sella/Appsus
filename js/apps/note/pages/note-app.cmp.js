@@ -1,6 +1,7 @@
 import noteList from '../cmps/note-list.cmp.js';
 import noteCreate from '../cmps/note-create.cmp.js';
 import { noteService } from '../services/note.service.js';
+import { eventBus } from '../../../services/event-bus.service.js';
 
 export default {
   name: 'noteApp',
@@ -30,12 +31,23 @@ export default {
         this.noteList = notes;
       });
     },
+    deleteNote(noteId) {
+      noteService.deleteNote(noteId).then((notes) => {
+        this.noteList = notes;
+      });
+    },
   },
   computed: {},
   created() {
     this.colors = noteService.getColors();
     noteService.getNotes().then((notes) => {
       this.noteList = notes;
+    });
+  },
+  mounted() {
+    eventBus.$on('makeAction', () => {
+      console.log('msg was heard!');
+      this.deleteNote(this.$route.params.noteId);
     });
   },
   components: {
