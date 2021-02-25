@@ -11,9 +11,13 @@ export default {
       };
     },
     methods: {
-        setFilter(filterBy){
-            this.$emit('filtered', filterBy);
+        setFilter(folder){
+            this.$emit('filtered', folder);
             this.$emit('callCloseCompose');
+            this.$router.push(`/email/${folder}`);
+            this.$route.params.folder = folder;
+            this.$emit('getFolder', folder);
+            console.log('folder',folder);
         }
     },
     computed: {},

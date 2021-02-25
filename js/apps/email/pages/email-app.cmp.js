@@ -9,14 +9,18 @@ export default {
   template: `
           <section class="email-app-container flex app-main main-container">
             <section class="side-menu-container flex column">
-              <button class="compose-btn flex align-center" @click="toggleCompose"><i class="fas fa-plus compose-icon"></i>Compose</button>
+              <!-- <button class="compose-btn flex align-center" @click="toggleCompose"><i class="fas fa-plus compose-icon"></i>Compose</button> -->
+              <router-link to="/email/compose"><button class="compose-btn flex align-center" @click="toggleCompose"><i class="fas fa-plus compose-icon"></i>Compose</button></router-link>
               <!-- <email-compose /> -->
               <!-- <router-link tag="button" class="compose-btn" :to="'/email/compose'"><i class="fas fa-plus compose-icon"></i>Compose</router-link> -->
-              <email-side-nav @filtered="setFilter" @callCloseCompose="closeCompose" :folders="folders"/>
+              <email-side-nav @filtered="setFilter" @callCloseCompose="closeCompose" :folders="folders" @getFolder="setFolder"/>
             </section>
-            <email-compose v-if="compose" @closeCompose="toggleCompose" @onAddMail="addNewMail"/>
-            <email-list v-if="emails && compose === false" :emails="mailsToShow" @addFolder="updateFolder" @emailClicked="openDetails"/>
-            <email-details v-if="currMail"/>
+            <router-view v-if="compose" @closeCompose="toggleCompose" @onAddMail="addNewMail"></router-view>
+            <!-- <email-compose v-if="compose" @closeCompose="toggleCompose" @onAddMail="addNewMail"/> -->
+            <router-view v-if="emails && compose === false" :folders="folders" :folder="currFolder" :emails="mailsToShow" @addFolder="updateFolder"></router-view>
+            <!-- <email-list v-if="emails && compose === false" :emails="mailsToShow" @addFolder="updateFolder" @emailClicked="openDetails"/> -->
+            <!-- <router-view to="/email/:folder/:emailId" v-if="currMail"></router-view> -->
+            <!-- <email-details v-if="currMail"/> -->
           </section>  
         `,
   data() {
@@ -25,6 +29,7 @@ export default {
       currFolder: 'inbox',
       compose: false,
       currMail: null,
+      // currMailId: null,
       folders: null,
     };
   },
@@ -57,9 +62,13 @@ export default {
         this.compose = false;
       });
     },
-    openDetails(emailId) {
-      console.log('Igot the id:',emailId);
+    setFolder(folder) {
+      this.currFolder = folder;
     },
+    // openDetails(emailId) {
+    //   console.log('Igot the id:',emailId);
+    //   this.currMailId = emailId;
+    // },
     getFolders() {
       this.folders = emailService.getFolders()
     },
@@ -81,6 +90,5 @@ export default {
   created() {
     this.loadEmails();
     this.getFolders();
-
   },
 };
