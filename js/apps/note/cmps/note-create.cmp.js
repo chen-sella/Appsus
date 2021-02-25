@@ -60,6 +60,7 @@ export default {
       console.log(this.note);
       this.$emit('newNote', this.note);
       this.txt = null;
+      this.title= null,
       this.type = null;
     },
     // uploadImg(ev) {

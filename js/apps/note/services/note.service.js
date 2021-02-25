@@ -31,7 +31,7 @@ var gNotes = [
     type: 'noteImg',
     isPinned: false,
     info: {
-      url: '/img/Layer 2@1X.png',
+      url: 'img/Layer 2@1X.png',
       title: 'My Perfect Vacation',
     },
     style: {
