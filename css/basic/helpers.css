@@ -21,6 +21,10 @@
     align-items: center;
 }
 
+.flex.flex-grow {
+    flex-grow: 1;
+}
+
 .container-bg {
     background-color: #f0f0f0;
 }

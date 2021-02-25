@@ -1,3 +1,17 @@
-* {
-  box-sizing: border-box;
+.side-menu-container {
+  width: 25%;
+  background-color: rgb(207, 207, 207);
+}
+
+.email-app-container .compose-btn {
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+.email-app-container .compose-icon {
+  margin-inline-end: 10px;
+  margin-inline-start: 5px;
 }
