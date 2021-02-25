@@ -14,7 +14,6 @@ export const noteService = {
   updateTxt,
 };
 
-var gImg;
 const NOTE_KEY = 'notesDB';
 
 var gNotes = [
@@ -23,6 +22,7 @@ var gNotes = [
     type: 'noteTxt',
     isPinned: true,
     info: {
+      title: 'Amazing note',
       txt: 'Fullstack Me Baby!',
     },
   },
@@ -44,7 +44,7 @@ var gNotes = [
     type: 'noteTodos',
     isPinned: false,
     info: {
-      label: 'Chores for next week:',
+      title: 'Chores for next week:',
       todos: [
         { txt: 'Buy new clothes', doneAt: null },
         { txt: 'Pay private trainer', doneAt: 187111111 },
@@ -57,7 +57,7 @@ var gNotes = [
     type: 'noteImg',
     isPinned: false,
     info: {
-      url: '/img/Layer 4@1X.png',
+      url: 'img/Layer 4@1X.png',
       title: 'Amazing Times',
     },
     style: { backgroundColor: 'white', borderColor: '#8080809e' },
@@ -67,7 +67,7 @@ var gNotes = [
     type: 'noteTodos',
     isPinned: false,
     info: {
-      label: 'Chores for Leetal:',
+      title: 'Chores for Leetal:',
       todos: [
         { txt: 'Take put the dogs', doneAt: 187111111 },
         { txt: 'Do not spill coffe', doneAt: null },
@@ -83,8 +83,18 @@ var gNotes = [
     type: 'noteTxt',
     isPinned: true,
     info: {
+      title: 'Note',
       txt:
         'I want this text note to be bigger then the others so im writing all of the text down and lets see how it goes',
+    },
+  },
+  {
+    id: utilService.getRandId(4),
+    type: 'noteImg',
+    isPinned: true,
+    info: {
+      url: 'img/jocelyn-morales-CO2VCtj40uc-unsplash.jpg',
+      title: 'Good Morning',
     },
   },
 ];
@@ -126,11 +136,12 @@ function newNote(type) {
   if (type === 'noteTxt') {
     info = {
       txt: '',
+      title: '',
     };
   }
   if (type === 'noteTodos') {
     info = {
-      label: '',
+      title: '',
       todos: [],
     };
   }
@@ -149,6 +160,7 @@ function newNote(type) {
 }
 
 function postNote(note) {
+  console.log({ note });
   return storageService.post(NOTE_KEY, note).then(() => {
     return storageService.query(NOTE_KEY);
   });
@@ -169,9 +181,15 @@ function changePinnState(noteId) {
   });
 }
 
-function updateTxt(txt, noteId) {
+function updateTxt(txt, noteId, type) {
   return getNoteById(noteId).then((note) => {
-    note.info.txt = txt;
+    if (type === 'noteTxt') {
+      note.info.txt = txt;
+    }
+    if (type === 'noteTodos') {
+      note.info.title = txt.title;
+      note.info.todos = txt.todos;
+    }
     return storageService.put(NOTE_KEY, note).then(() => {
       return storageService.query(NOTE_KEY);
     });
