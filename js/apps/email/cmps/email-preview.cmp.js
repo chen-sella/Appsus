@@ -57,9 +57,9 @@ export default {
       },
       changeStar() {
         if (this.email.folders.includes('starred')) {
-          return '../../../../img/star-full.png'
+          return 'img/star-full.png'
         } else {
-          return '../../../../img/star-empty.png'
+          return 'img/star-empty.png'
         } 
       },
     },
