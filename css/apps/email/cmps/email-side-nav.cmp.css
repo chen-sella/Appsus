@@ -1,3 +1,7 @@
 .email-side-nav-container {
     margin-top: 20px;
 }
+
+.email-side-nav-container .nav-link {
+    cursor: pointer;
+}

@@ -2,7 +2,6 @@ import { emailService } from '../services/email.service.js';
 import emailList from '../cmps/email-list.cmp.js';
 import emailSideNav from '../cmps/email-side-nav.cmp.js';
 import emailCompose from '../cmps/email-compose.cmp.js';
-import { utilService } from '../../../services/util.service.js';
 
 export default {
   name: 'emailApp',
@@ -12,9 +11,9 @@ export default {
               <button class="compose-btn" @click="toggleCompose"><i class="fas fa-plus compose-icon"></i>Compose</button>
               <!-- <email-compose /> -->
               <!-- <router-link tag="button" class="compose-btn" :to="'/email/compose'"><i class="fas fa-plus compose-icon"></i>Compose</router-link> -->
-              <email-side-nav @filtered="setFilter"/>
+              <email-side-nav @filtered="setFilter" @callCloseCompose="closeCompose"/>
             </section>
-            <email-compose v-if="compose" @closeCompose="toggleCompose"/>
+            <email-compose v-if="compose" @closeCompose="toggleCompose" @onAddMail="addNewMail"/>
             <email-list v-if="emails && compose === false" :emails="mailsToShow" @addFolder="updateFolder"/>
           </section>  
         `,
@@ -43,6 +42,16 @@ export default {
     },
     toggleCompose() {
       this.compose = !this.compose;
+    },
+    closeCompose() {
+      this.compose = false;
+    },
+    addNewMail(emailInfo) {
+      return emailService.createNewEmail(emailInfo)
+      .then(emails => {
+        this.emails = emails
+        this.compose = false;
+      });
     }
   },
   computed: {

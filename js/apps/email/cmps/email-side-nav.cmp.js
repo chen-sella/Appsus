@@ -13,8 +13,8 @@ export default {
     },
     methods: {
         setFilter(filterBy){
-            console.log('filterBy',filterBy);
             this.$emit('filtered', filterBy);
+            this.$emit('callCloseCompose');
         }
     },
     computed: {},
