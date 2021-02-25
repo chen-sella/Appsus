@@ -3,7 +3,7 @@ export default {
     name: 'emailPreview',
     props: ['email'],
     template: `
-            <section class="email-preview-container flex space-between" :class="toggleBcg">
+            <section class="email-preview-container flex space-between" :class="toggleBcg" @click="openDetail">
               <div class="flex align-center">
                 <div class="name-circle flex align-center justify-center" :style="setBackground">{{nameInitials}}</div>
                 <div class="email-preview-details flex column space-between">
@@ -34,6 +34,10 @@ export default {
         this.folderToToggle = 'starred';
         this.$emit('sendStarEvent', this.email.id, this.folderToToggle)
       },
+      openDetail() {
+        const emailId = this.email.id;
+        this.$router.push(`/email/:${emailId}`)
+      }
     },
     computed: {
       formattedTime() {

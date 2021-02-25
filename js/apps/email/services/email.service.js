@@ -128,6 +128,8 @@ var gEmails = [
   },
 ];
 
+const folders = ['inbox', 'starred', 'sent', 'trash']
+
 export const emailService = {
   query,
   remove,
@@ -135,7 +137,14 @@ export const emailService = {
   getById,
   createNewEmail,
   toggleEmailFolder,
+  getFolders,
 };
+
+
+function getFolders() {
+console.log('getting folders from service...');
+return folders;
+}
 
 function toggleEmailFolder(emailId, folderName) {
   return getById(emailId).then((email) => {
