@@ -13,7 +13,10 @@ export default {
                   <long-text v-else-if="isLongText" :txt="email.body" :length="length"/>
                 </div>
               </div>
+              <div class="flex column space-between align-center">
               <p class="email-time" :class="toggleBold">{{formattedTime}}</p>
+              <img :src="changeStar" class="star-img" @click="toggleStarred">
+              </div>
             </section>
         `,
     data() {
@@ -25,6 +28,9 @@ export default {
     methods: {
       checkTxtLength() {
         this.isLongText = (this.email.body.length > this.length) ? true : false;
+      },
+      toggleStarred() {
+        this.$emit('toggleStarred', this.email.id);
       },
     },
     computed: {
@@ -46,7 +52,14 @@ export default {
         if (!name.includes(' ')) return firstNameLetter;
         else {const lastNameLetter = name.substr(name.indexOf(' ')+1, 1).toUpperCase();
         return `${firstNameLetter}${lastNameLetter}`};
-      }
+      },
+      changeStar() {
+        if (this.email.folders.includes('starred')) {
+          return '../../../../img/star-full.png'
+        } else {
+          return '../../../../img/star-empty.png'
+        } 
+      },
     },
     created() {
       this.checkTxtLength();
