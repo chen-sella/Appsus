@@ -7,6 +7,7 @@ export const noteService = {
   getColors,
   onImgInput,
   newNote,
+  postNote
 };
 
 const NOTE_KEY = 'notesDB';
@@ -72,11 +73,11 @@ var gNotes = [
     type: 'noteTxt',
     isPinned: true,
     info: {
-      txt: 'I want this text note to be bigger then the others so im writing all of the text down and lets see how it goes',
+      txt:
+        'I want this text note to be bigger then the others so im writing all of the text down and lets see how it goes',
     },
-  }
+  },
 ];
-
 
 function getNotes() {
   return storageService.query(NOTE_KEY).then((entities) => {
@@ -148,5 +149,16 @@ function newNote(type) {
       title: '',
     };
   }
-  return { info };
+  return {
+    type,
+    info,
+    isPinned: false,
+    style: { backgroundColor: 'white', borderColor: '#8080809e' },
+  };
+}
+
+function postNote(note){
+ return storageService.post(NOTE_KEY, note).then(()=>{
+    return storageService.query(NOTE_KEY);
+ })
 }

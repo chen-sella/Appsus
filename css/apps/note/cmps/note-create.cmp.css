@@ -18,3 +18,7 @@
   margin-inline-start: 20px;
   cursor: pointer;
 }
+
+input[name="upload-file"]{
+  display: none;
+}

@@ -29,7 +29,3 @@
   border: 0.5px solid #8080809e;
   cursor: pointer;
 }
-
-input[name="upload-file"]{
-  display: none;
-}
