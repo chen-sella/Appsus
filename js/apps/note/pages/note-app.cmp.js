@@ -2,46 +2,57 @@ import noteList from '../cmps/note-list.cmp.js';
 import noteCreate from '../cmps/note-create.cmp.js';
 import { noteService } from '../services/note.service.js';
 import { eventBus } from '../../../services/event-bus.service.js';
+import { utilService } from '../../../services/util.service.js';
 
 export default {
   name: 'noteApp',
   template: `
       <section class="note-app main-container">
         <note-create @newNote="postNote"></note-create>
-        <note-list v-if="noteList" :colors="colors" :notes="noteList" :pinned="false" @changeColor="changeColor"></note-list>
+        <note-list v-if="noteList" :colors="colors" :notes="pinnedNoteList" @changeColor="changeColor" @pinned="pinnNote"></note-list>
+        <note-list v-if="noteList" :colors="colors" :notes="noteList" @changeColor="changeColor" @pinned="pinnNote"></note-list>
       </section>
               
           `,
   data() {
     return {
-      noteList: null,
       colors: null,
+      noteList: null,
+      pinnedNoteList: null,
     };
   },
   methods: {
+    updateLists(notes) {
+      console.log({notes});
+      this.noteList = notes.filter((note) => {
+        return !note.isPinned;
+      });
+      this.pinnedNoteList = notes.filter((note) => {
+        return note.isPinned;
+      });
+      console.log('noteList', this.noteList);
+      console.log('pinnedNoteList', this.pinnedNoteList);
+    },
     changeColor(color, noteId) {
       noteService.updateColor(color, noteId).then((note) => {
-        noteService.getNotes().then((notes) => (this.noteList = notes));
+        noteService.getNotes().then((notes) => this.updateLists(notes));
       });
     },
     postNote(note) {
-      noteService.postNote(note).then((notes) => {
-        console.log(notes);
-        this.noteList = notes;
-      });
+      noteService.postNote(note).then((notes) => this.updateLists(notes));
     },
     deleteNote(noteId) {
-      noteService.deleteNote(noteId).then((notes) => {
-        this.noteList = notes;
-      });
+      noteService.deleteNote(noteId).then((notes) => this.updateLists(notes));
+    },
+    pinnNote(noteId) {
+      noteService.changePinnState(noteId).then((notes) => this.updateLists(notes));
     },
   },
   computed: {},
   created() {
-    this.colors = noteService.getColors();
+    this.colors = utilService.getColors();
     noteService.getNotes().then((notes) => {
-      this.noteList = notes;
-      console.log('notes', notes);
+      this.updateLists(notes);
     });
   },
   mounted() {

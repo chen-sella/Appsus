@@ -4,14 +4,13 @@ import noteImg from '../cmps/note-types/note-img.cmp.js';
 import noteVideo from '../cmps/note-types/note-video.cmp.js';
 import noteControls from './note-controls.cmp.js';
 
-
 export default {
   name: 'notePreview',
   props: ['note', 'colors'],
   template: `
         <section class="note-preview" :style="theme" ref="previewContainer">
           <component :is="note.type" :info="note.info"></component>
-          <note-controls :note="note" :colors="colors" @colorPicked="changeColor"></note-controls>
+          <note-controls :note="note" :colors="colors" @colorPicked="changeColor" @pinned="pinnNote"></note-controls>
         </section>
         `,
   data() {
@@ -20,6 +19,9 @@ export default {
   methods: {
     changeColor(color) {
       this.$emit('changeColor', color, this.note.id);
+    },
+    pinnNote() {
+      this.$emit('pinned', this.note.id);
     },
   },
   computed: {
