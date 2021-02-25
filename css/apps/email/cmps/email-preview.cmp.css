@@ -6,6 +6,7 @@
   padding: 10px;
   margin-bottom: 5px;
   font-size: 0.9rem;
+  cursor: pointer;
 }
 
 .email-preview-container .name-circle {

@@ -1,15 +1,14 @@
 export default {
+    props: ['folders'],
     name: 'emailSideNav',
     template: `
             <nav class="email-side-nav-container flex column">
-                <a class="nav-link" @click="setFilter('inbox')">Inbox</a>
-                <a class="nav-link" @click="setFilter('starred')">Starred</a>
-                <a class="nav-link" @click="setFilter('sent')">Sent</a>
-                <a class="nav-link" @click="setFilter('trash')">Trash</a>
+                <a v-for="folder in folders" class="nav-link" @click="setFilter(folder)">{{folder}}</a>
             </nav>
         `,
     data() {
-      return {};
+      return {
+      };
     },
     methods: {
         setFilter(filterBy){
@@ -20,4 +19,6 @@ export default {
     computed: {},
     components: {
     },
+    created() {
+    }
   };

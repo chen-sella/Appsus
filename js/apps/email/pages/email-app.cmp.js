@@ -2,7 +2,7 @@ import { emailService } from '../services/email.service.js';
 import emailList from '../cmps/email-list.cmp.js';
 import emailSideNav from '../cmps/email-side-nav.cmp.js';
 import emailCompose from '../cmps/email-compose.cmp.js';
-import emailDetails from '../pages/email-details.cmp.js';
+import emailDetails from '../cmps/email-details.cmp.js';
 
 export default {
   name: 'emailApp',
@@ -12,7 +12,7 @@ export default {
               <button class="compose-btn flex align-center" @click="toggleCompose"><i class="fas fa-plus compose-icon"></i>Compose</button>
               <!-- <email-compose /> -->
               <!-- <router-link tag="button" class="compose-btn" :to="'/email/compose'"><i class="fas fa-plus compose-icon"></i>Compose</router-link> -->
-              <email-side-nav @filtered="setFilter" @callCloseCompose="closeCompose"/>
+              <email-side-nav @filtered="setFilter" @callCloseCompose="closeCompose" :folders="folders"/>
             </section>
             <email-compose v-if="compose" @closeCompose="toggleCompose" @onAddMail="addNewMail"/>
             <email-list v-if="emails && compose === false" :emails="mailsToShow" @addFolder="updateFolder" @emailClicked="openDetails"/>
@@ -25,6 +25,7 @@ export default {
       currFolder: 'inbox',
       compose: false,
       currMail: null,
+      folders: null,
     };
   },
   methods: {
@@ -58,7 +59,10 @@ export default {
     },
     openDetails(emailId) {
       console.log('Igot the id:',emailId);
-    }
+    },
+    getFolders() {
+      this.folders = emailService.getFolders()
+    },
   },
   computed: {
     mailsToShow() {
@@ -76,6 +80,7 @@ export default {
   },
   created() {
     this.loadEmails();
+    this.getFolders();
 
   },
 };

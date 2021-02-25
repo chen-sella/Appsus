@@ -18,10 +18,12 @@ export default {
                 <div v-if="openBcc" class="input-area-container flex"><input type="text" placeholder="Bcc:" name="bcc" v-model="newEmail.mailInfo.bcc"></div>
                 <div class="input-area-container flex"><input type="text" placeholder="Subject:" name="subject" v-model="newEmail.subject"></div>
                 <!-- <textarea v-model="newEmail.body" class="textarea" cols="120" rows="20"></textarea> -->
-                <div contenteditable="true" ref="newEmailBody" class="textarea flex-grow"></div>
-                <div class="form-btns-container flex space-between align-center">
-                  <button class="save-btn">Save</button>
-                  <button class="cancel-btn"><i class="fas fa-trash trash-icon"></i></button>
+                <div class="flex column space-between">
+                  <div contenteditable="true" ref="newEmailBody" class="textarea flex-grow"></div>
+                  <div class="form-btns-container flex space-between align-center">
+                    <button class="save-btn">Save</button>
+                    <button class="cancel-btn"><i class="fas fa-trash trash-icon"></i></button>
+                  </div>
                 </div>
               </form>
             </section>
