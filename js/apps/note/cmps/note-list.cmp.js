@@ -1,41 +1,24 @@
 import notePreview from '../cmps/note-preview.cmp.js';
-import { noteService } from '../services/note.service.js';
 
 export default {
   name: 'noteList',
+  props: ['colors', 'notes'],
   template: `
-        <ul v-if="noteList" class="note-list clean-list">
-            <li v-for="note in noteList">
-                <note-preview :note="note" :colors="colors" @changeColor="changeColor" @uploadImg="uploadImg"></note-preview>
+        <ul class="note-list clean-list">
+            <li v-for="note in notes">
+                <note-preview :note="note" :colors="colors" @changeColor="changeColor"></note-preview>
             </li>
         </ul>
         `,
   data() {
-    return {
-      noteList: null,
-      colors: null,
-    }
+    return {};
   },
   methods: {
     changeColor(color, noteId) {
-      noteService.updateColor(color, noteId).then((note) => {
-        console.log(note);
-        noteService.getNotes().then((notes)=>this.noteList = notes)
-      });
+      this.$emit('changeColor', color, noteId);
     },
-    uploadImg(ev){
-      noteService.onImgInput(ev);
-    }
   },
   computed: {},
-  created() {
-    this.colors = noteService.getColors();
-    console.log(this.colors);
-    noteService.getNotes().then((notes) => {
-      this.noteList = notes;
-      console.log(this.noteList);
-    });
-  },
   components: {
     notePreview,
   },
