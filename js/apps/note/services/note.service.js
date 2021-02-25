@@ -20,11 +20,12 @@ var gNotes = [
   {
     id: utilService.getRandId(4),
     type: 'noteTxt',
-    isPinned: true,
+    isPinned: false,
     info: {
       title: 'Amazing note',
       txt: 'Fullstack Me Baby!',
     },
+    style: { backgroundColor: '#AECBFA', borderColor: '#AECBFA' },
   },
   {
     id: utilService.getRandId(4),
@@ -34,10 +35,7 @@ var gNotes = [
       url: 'img/Layer 2@1X.png',
       title: 'My Perfect Vacation',
     },
-    style: {
-      backgroundColor: '#F28B83',
-      borderColor: '#F28B83',
-    },
+    style: { backgroundColor: '#F28B83', borderColor: '#F28B83' },
   },
   {
     id: utilService.getRandId(4),
@@ -51,21 +49,22 @@ var gNotes = [
         { txt: 'Do Laundry', doneAt: null },
       ],
     },
+    style: { backgroundColor: 'white', borderColor: '#8080809e' },
   },
   {
     id: utilService.getRandId(4),
     type: 'noteImg',
     isPinned: false,
     info: {
-      url: 'img/Layer 4@1X.png',
-      title: 'Amazing Times',
+      url: 'img/jordan-whitt-lvh5L46VWuA-unsplash.jpg',
+      title: 'Cat',
     },
-    style: { backgroundColor: 'white', borderColor: '#8080809e' },
+    style: { backgroundColor: '#FCBC02', borderColor: '#FCBC02' },
   },
   {
     id: utilService.getRandId(4),
     type: 'noteTodos',
-    isPinned: false,
+    isPinned: true,
     info: {
       title: 'Chores for Leetal:',
       todos: [
@@ -76,26 +75,28 @@ var gNotes = [
         { txt: 'Send some emails', doneAt: null },
       ],
     },
-    style: { backgroundColor: 'white', borderColor: '#8080809e' },
+    style: { backgroundColor: '#CCFF90', borderColor: '#CCFF90' },
   },
   {
     id: utilService.getRandId(4),
     type: 'noteTxt',
-    isPinned: true,
+    isPinned: false,
     info: {
       title: 'Note',
       txt:
         'I want this text note to be bigger then the others so im writing all of the text down and lets see how it goes',
     },
+    style: { backgroundColor: '#FDCFE8', borderColor: '#FDCFE8' },
   },
   {
     id: utilService.getRandId(4),
     type: 'noteImg',
-    isPinned: true,
+    isPinned: false,
     info: {
       url: 'img/jocelyn-morales-CO2VCtj40uc-unsplash.jpg',
       title: 'Good Morning',
     },
+    style: { backgroundColor: 'white', borderColor: '#8080809e' },
   },
 ];
 

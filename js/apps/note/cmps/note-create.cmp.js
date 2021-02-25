@@ -29,11 +29,6 @@ export default {
     setType(type) {
       this.type = type;
       this.note = noteService.newNote(this.type);
-      // if (type === 'noteImg') this.isImg = true;
-      // else {
-      //   this.isImg = false;
-      // }
-      // if (type === 'noteImg') this.inputClick();
       console.log(this.type);
       console.log(this.note);
     },
@@ -60,7 +55,7 @@ export default {
       console.log(this.note);
       this.$emit('newNote', this.note);
       this.txt = null;
-      this.title= null,
+      this.title = null,
       this.type = null;
     },
     // uploadImg(ev) {

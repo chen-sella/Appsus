@@ -4,4 +4,17 @@
 
 .email-side-nav-container .nav-link {
     cursor: pointer;
+    margin-block-end: 10px;
+    padding-inline-start: 20px;
+    font-size: 18px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.email-side-nav-container .nav-link:hover{
+    background-color: rgb(224, 219, 219);
+}
+
+.email-side-nav-container .nav-link:focus{
+    background-color: rgb(250, 115, 115);
 }
