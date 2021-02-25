@@ -1,17 +1,17 @@
 export default {
-    name: 'emailCompose',
-    template: `
+  name: 'emailCompose',
+  template: `
             <section class="email-compose-container flex column">
               <div class="compose-header flex space-between align-center">
                 <p>New message</p>
                 <button class="x-btn" @click="onCloseCompose">X</button>
               </div>
-              <form @submit.prevent="save">
-                <div class="input-area-container flex"><label for="sendTo">To:</label><input type="text" class="flex-grow" name="sendTo" v-model="sendTo"></div>
-                <div class="input-area-container"><label for="cc">Cc:</label><input type="text" name="cc" v-model="cc"></div>
-                <div class="input-area-container"><label for="bcc">Bcc:</label><input type="text" name="bcc" v-model="bcc"></div>
-                <div class="input-area-container"><label for="subject">Subject:</label><input type="text" name="subject" v-model="subject"></div>
-                <div><textarea v-model="body" placeholder="Your mail goes here"></textarea></div>
+              <form @submit.prevent="save(newEmail)">
+                <div class="input-area-container flex"><input type="text" placeholder="To:" name="sendTo" v-model="newEmail.mailInfo.sendTo"></div>
+                <div class="input-area-container flex"><input type="text" placeholder="Cc:" name="cc" v-model="newEmail.mailInfo.cc"></div>
+                <div class="input-area-container flex"><input type="text" placeholder="Bcc:" name="bcc" v-model="newEmail.mailInfo.bcc"></div>
+                <div class="input-area-container flex"><input type="text" placeholder="Subject:" name="subject" v-model="newEmail.subject"></div>
+                <textarea v-model="newEmail.body" class="textarea" cols="120" rows="20"></textarea>
                 <div class="flex space-between">
                   <button>Save</button>
                   <button>Cancel</button>
@@ -19,24 +19,28 @@ export default {
               </form>
             </section>
         `,
-    data() {
-      return {
-        sendTo: '',
-        cc: '',
-        bcc: '',
-        subject: '',
-        body: '',
-      };
+  data() {
+    return {
+          newEmail: { 
+            mailInfo: {
+                  sender: '',
+                  sendTo: '',
+                  cc: '',
+                  bcc: '',
+                },
+            subject: '', 
+            body: '',  
+          },
+    }
+  },
+  methods: {
+    onCloseCompose() {
+      this.$emit('closeCompose');
     },
-    methods: {
-      onCloseCompose() {
-        this.$emit('closeCompose');
-      },
-      save() {
-        console.log('saving form');
-      }
+    save(newEmail) {
+      this.$emit('onAddMail', newEmail);
     },
-    computed: {},
-    components: {},
-  };
-  
+  },
+  computed: {},
+  components: {},
+};
