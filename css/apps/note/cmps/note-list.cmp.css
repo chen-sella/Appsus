@@ -1,20 +1,5 @@
 .note-list {
-  /* display: flex;
-    justify-content: center;
-    align-items: flex-start; */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 10px;
-  /* grid-auto-flow: dense; */
-  grid-auto-rows: 100px;
+  column-count: 3;
+  column-width: 150px;
 }
 
-.portrait{
-    grid-row: span 3;
-    grid-column: span 2;
-}
-
-.landscape{
-    grid-row: span 2;
-    grid-column: span 3;
-}
