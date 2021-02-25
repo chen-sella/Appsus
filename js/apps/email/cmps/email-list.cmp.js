@@ -6,7 +6,7 @@ export default {
     template: `
             <ul class="email-list-container">
               <li v-for="email in emails" :key="email.id" class="clean-list">
-                <email-preview :email="email" @sendStarEvent="shareStarEvent"/>
+                <email-preview :email="email" @click.native="openDetails(email.id)" @sendStarEvent="shareStarEvent"/>
               </li>
             </ul>   
         `,
@@ -16,6 +16,9 @@ export default {
     methods: {
       shareStarEvent(emailId, folderName) {
         this.$emit('addFolder', emailId, folderName);
+      },
+      openDetails(emailId) {
+        this.$emit('emailClicked', emailId);
       }
     },
     computed: {},
