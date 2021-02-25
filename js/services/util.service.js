@@ -4,7 +4,8 @@ export const utilService = {
   loadFromStorage,
   getRandomColor,
   getRandomIntInclusive,
-  getColors
+  getColors,
+  getRandBackground
 };
 
 var gColors = [
@@ -48,6 +49,12 @@ function getRandomColor() {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
+}
+
+function getRandBackground() {
+  const colorIdx = getRandomIntInclusive(0, 11);
+  const bgc = gColors[colorIdx].backgroundColor;
+  return bgc;
 }
 
 function getRandomIntInclusive(min, max) {

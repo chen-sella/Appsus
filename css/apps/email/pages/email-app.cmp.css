@@ -14,4 +14,6 @@
 .email-app-container .compose-icon {
   margin-inline-end: 10px;
   margin-inline-start: 5px;
+  color: #f8cb66;
+  font-size: 1.2rem;
 }

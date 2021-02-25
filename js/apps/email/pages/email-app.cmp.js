@@ -9,7 +9,7 @@ export default {
   template: `
           <section class="email-app-container flex app-main">
             <section class="side-menu-container flex column align-center">
-              <button class="compose-btn" @click="toggleCompose"><i class="fas fa-plus compose-icon"></i>Compose</button>
+              <button class="compose-btn flex align-center" @click="toggleCompose"><i class="fas fa-plus compose-icon"></i>Compose</button>
               <!-- <email-compose /> -->
               <!-- <router-link tag="button" class="compose-btn" :to="'/email/compose'"><i class="fas fa-plus compose-icon"></i>Compose</router-link> -->
               <email-side-nav @filtered="setFilter" @callCloseCompose="closeCompose"/>

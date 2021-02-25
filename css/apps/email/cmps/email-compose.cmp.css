@@ -26,6 +26,23 @@
   border-bottom: 1px solid rgb(231, 231, 231);
 }
 
+form button {
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+}
+
+.save-btn {
+  margin-inline-start: 20px;
+  background-color: #f8cb66;
+}
+
+.cancel-btn {
+  margin-inline-end: 20px;
+}
+
 /* .input-area-container .textarea {
   border: none;
   border-style: none; 
