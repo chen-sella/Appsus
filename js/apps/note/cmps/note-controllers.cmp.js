@@ -32,8 +32,8 @@ export default {
     },
     pickColor(color) {
       this.$emit('colorPicked', color);
-      this.colorEdit = !this.colorEdit;
-      console.log(this.colorEdit);
+      this.colorEdit = false;
+      console.log('colorEdit:', this.colorEdit);
     },
     uploadImg(ev) {
       console.log(ev);

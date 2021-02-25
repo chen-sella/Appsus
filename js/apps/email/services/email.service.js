@@ -91,6 +91,7 @@ export const emailService = {
   save,
   getById,
   createNewEmail,
+  addFolder,
 };
 
 function addFolder(emailId) {
