@@ -1,6 +1,7 @@
 .note-list {
   column-count: 3;
   column-width: 240px;
+  margin-block-start: 40px;
   margin-block-end: 40px;
 }
 

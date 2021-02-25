@@ -11,6 +11,7 @@ export const noteService = {
   postNote,
   deleteNote,
   // getPinned,
+  changePinnState,
 };
 
 var gImg;
@@ -88,10 +89,8 @@ var gNotes = [
   },
 ];
 
-
 function getNotes() {
   return storageService.query(NOTE_KEY).then((entities) => {
-    console.log(entities);
     if (entities.length === 0) {
       console.log('saving for the first time...');
       utilService.saveToStorage(NOTE_KEY, gNotes);
@@ -102,23 +101,11 @@ function getNotes() {
   });
 }
 
-// function getPinned() {
-//   return storageService.query(NOTE_KEY).then((notes) => {
-//     console.log('notes', notes);
-//     return Promise.resolve(
-//       notes.filter((note) => {
-//         return note.isPinned;
-//       })
-//     );
-//   });
-// }
-
 function getNoteById(noteId) {
   return storageService.get(NOTE_KEY, noteId);
 }
 
 function updateColor(color, noteId) {
-  console.log('coloris:', color);
   return getNoteById(noteId).then((note) => {
     if (note.style) {
       note.style.backgroundColor = color.backgroundColor;
@@ -170,6 +157,15 @@ function postNote(note) {
 function deleteNote(noteId) {
   return storageService.remove(NOTE_KEY, noteId).then(() => {
     return storageService.query(NOTE_KEY);
+  });
+}
+
+function changePinnState(noteId) {
+  return getNoteById(noteId).then((note) => {
+    note.isPinned = !note.isPinned;
+    return storageService.put(NOTE_KEY, note).then(() => {
+      return storageService.query(NOTE_KEY);
+    });
   });
 }
 
