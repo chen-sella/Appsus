@@ -6,9 +6,10 @@ export const noteService = {
   getNotes,
   updateColor,
   getColors,
-  onImgInput,
+  // onImgInput,
   newNote,
   postNote,
+  deleteNote,
 };
 
 var gImg;
@@ -115,30 +116,6 @@ function getColors() {
   return utilService.getColors();
 }
 
-function onImgInput(ev) {
-  console.log(ev);
-  loadImageFromInput(ev, returnImg);
-  setTimeout(() => {
-    return gImg.src;
-  }, 3000);
-}
-
-function loadImageFromInput(ev, onImageReady) {
-  var reader = new FileReader();
-
-  reader.onload = (event) => {
-    var img = new Image();
-    img.onload = onImageReady.bind(null, img);
-    img.src = event.target.result;
-    gImg = img;
-  };
-  reader.readAsDataURL(ev.target.files[0]);
-}
-
-function returnImg() {
-  console.log(gImg.src);
-}
-
 function newNote(type) {
   var info;
   if (type === 'noteTxt') {
@@ -171,3 +148,33 @@ function postNote(note) {
     return storageService.query(NOTE_KEY);
   });
 }
+
+function deleteNote(noteId) {
+  return storageService.remove(NOTE_KEY, noteId).then(() => {
+    return storageService.query(NOTE_KEY);
+  });
+}
+
+// function onImgInput(ev) {
+//   console.log(ev);
+//   loadImageFromInput(ev, returnImg);
+//   setTimeout(() => {
+//     return gImg.src;
+//   }, 3000);
+// }
+
+// function loadImageFromInput(ev, onImageReady) {
+//   var reader = new FileReader();
+
+//   reader.onload = (event) => {
+//     var img = new Image();
+//     img.onload = onImageReady.bind(null, img);
+//     img.src = event.target.result;
+//     gImg = img;
+//   };
+//   reader.readAsDataURL(ev.target.files[0]);
+// }
+
+// function returnImg() {
+//   console.log(gImg.src);
+// }

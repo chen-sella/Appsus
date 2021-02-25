@@ -1,3 +1,4 @@
+import { eventBus } from '../../../services/event-bus.service.js';
 import colorPalette from './note-color-palette.cmp.js';
 
 export default {
@@ -31,6 +32,16 @@ export default {
     },
     deleteNote() {
       console.log('deleting');
+      const id = this.note.id;
+      console.log(id);
+      this.$route.params.noteId = id;
+      console.log(this.$route.params);
+      const msg = {
+        txt: 'Are you sure?',
+        type: 'success',
+        isAction: 'yes',
+      };
+      eventBus.$emit('show-msg', msg);
     },
   },
   computed: {},

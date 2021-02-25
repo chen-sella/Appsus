@@ -1,10 +1,17 @@
 .note-update-list{
-  justify-content: space-evenly;
+  justify-content: flex-end;
 }
 
 .note-update-list li{
   cursor: pointer;
+  margin-inline-start: 15px;
 }
+
+.note-update-list li >:last-child{
+  margin-inline-end: 10px;
+
+}
+
 
 .palette-icon{
   position: relative;
