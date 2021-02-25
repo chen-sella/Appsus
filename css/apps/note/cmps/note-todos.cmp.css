@@ -1,3 +1,7 @@
-.marked{
+.marked {
   text-decoration: line-through;
+}
+
+.note-todos h3 {
+  font-family: roboto-bold;
 }

@@ -8,7 +8,7 @@ export default {
   name: 'emailApp',
   template: `
           <section class="email-app-container flex app-main">
-            <section class="side-menu-container flex column align-center">
+            <section class="side-menu-container flex column">
               <button class="compose-btn flex align-center" @click="toggleCompose"><i class="fas fa-plus compose-icon"></i>Compose</button>
               <!-- <email-compose /> -->
               <!-- <router-link tag="button" class="compose-btn" :to="'/email/compose'"><i class="fas fa-plus compose-icon"></i>Compose</router-link> -->

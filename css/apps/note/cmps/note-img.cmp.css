@@ -8,3 +8,7 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+
+.note-img h3 {
+  font-family: roboto-bold;
+}
