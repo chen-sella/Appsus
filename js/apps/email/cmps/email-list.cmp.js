@@ -6,14 +6,18 @@ export default {
     template: `
             <ul class="email-list-container">
               <li v-for="email in emails" :key="email.id" class="clean-list">
-                <email-preview :email="email"/>
+                <email-preview :email="email" @addFolder="addToFolder"/>
               </li>
             </ul>   
         `,
     data() {
       return {};
     },
-    methods: {},
+    methods: {
+      addToFolder(emailId) {
+        this.$emit('addFolder', emailId);
+      }
+    },
     computed: {},
     components: {
       emailPreview,

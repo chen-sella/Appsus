@@ -7,7 +7,7 @@ export default {
   template: `
           <section class="email-app-container flex app-main">
             <email-side-nav @filtered="setFilter"/>
-            <email-list v-if="emails" :emails="mailsToShow"/>
+            <email-list v-if="emails" :emails="mailsToShow" @addFolder="moveToFolder"/>
           </section>  
         `,
   data() {
@@ -27,6 +27,9 @@ export default {
     setFilter(filterBy) {
       this.currFolder = filterBy;
       console.log('this.currFolder',this.currFolder);
+    },
+    moveToFolder(emailId) {
+      console.log('The star was clicked, emailId:',emailId);
     }
   },
   computed: {

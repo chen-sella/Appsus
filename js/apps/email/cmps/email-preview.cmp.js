@@ -30,7 +30,7 @@ export default {
         this.isLongText = (this.email.body.length > this.length) ? true : false;
       },
       toggleStarred() {
-        this.$emit('toggleStarred', this.email.id);
+        this.$emit('addFolder', this.email.id)
       },
     },
     computed: {

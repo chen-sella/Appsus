@@ -93,6 +93,14 @@ export const emailService = {
   createNewEmail,
 };
 
+function addFolder(emailId) {
+    getById(id)
+    .then(email => {
+        email.folders.push('starred')
+        console.log('added folder to email:',email);
+    })
+}
+
 function createNewEmail() {
   return {
     id: utilService.getRandId(),
