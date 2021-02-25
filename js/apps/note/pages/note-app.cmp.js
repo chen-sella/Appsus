@@ -8,8 +8,7 @@ export default {
   template: `
       <section class="note-app main-container">
         <note-create @newNote="postNote"></note-create>
-        <note-list v-if="noteList" :colors="colors" :notes="noteList" @changeColor="changeColor"></note-list>
-
+        <note-list v-if="noteList" :colors="colors" :notes="noteList" :pinned="false" @changeColor="changeColor"></note-list>
       </section>
               
           `,
@@ -42,6 +41,7 @@ export default {
     this.colors = noteService.getColors();
     noteService.getNotes().then((notes) => {
       this.noteList = notes;
+      console.log('notes', notes);
     });
   },
   mounted() {
