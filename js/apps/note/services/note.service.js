@@ -10,6 +10,7 @@ export const noteService = {
   newNote,
   postNote,
   deleteNote,
+  // getPinned,
 };
 
 var gImg;
@@ -27,17 +28,20 @@ var gNotes = [
   {
     id: utilService.getRandId(4),
     type: 'noteImg',
+    isPinned: false,
     info: {
       url: '/img/Layer 2@1X.png',
       title: 'My Perfect Vacation',
     },
     style: {
       backgroundColor: '#F28B83',
+      borderColor: '#F28B83',
     },
   },
   {
     id: utilService.getRandId(4),
     type: 'noteTodos',
+    isPinned: false,
     info: {
       label: 'Chores for next week:',
       todos: [
@@ -50,6 +54,7 @@ var gNotes = [
   {
     id: utilService.getRandId(4),
     type: 'noteImg',
+    isPinned: false,
     info: {
       url: '/img/Layer 4@1X.png',
       title: 'Amazing Times',
@@ -59,6 +64,7 @@ var gNotes = [
   {
     id: utilService.getRandId(4),
     type: 'noteTodos',
+    isPinned: false,
     info: {
       label: 'Chores for Leetal:',
       todos: [
@@ -82,6 +88,7 @@ var gNotes = [
   },
 ];
 
+
 function getNotes() {
   return storageService.query(NOTE_KEY).then((entities) => {
     console.log(entities);
@@ -94,6 +101,17 @@ function getNotes() {
     return Promise.resolve(entities);
   });
 }
+
+// function getPinned() {
+//   return storageService.query(NOTE_KEY).then((notes) => {
+//     console.log('notes', notes);
+//     return Promise.resolve(
+//       notes.filter((note) => {
+//         return note.isPinned;
+//       })
+//     );
+//   });
+// }
 
 function getNoteById(noteId) {
   return storageService.get(NOTE_KEY, noteId);
