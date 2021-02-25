@@ -2,6 +2,7 @@ import { emailService } from '../services/email.service.js';
 import emailList from '../cmps/email-list.cmp.js';
 import emailSideNav from '../cmps/email-side-nav.cmp.js';
 import emailCompose from '../cmps/email-compose.cmp.js';
+import emailDetails from '../pages/email-details.cmp.js';
 
 export default {
   name: 'emailApp',
@@ -14,7 +15,8 @@ export default {
               <email-side-nav @filtered="setFilter" @callCloseCompose="closeCompose"/>
             </section>
             <email-compose v-if="compose" @closeCompose="toggleCompose" @onAddMail="addNewMail"/>
-            <email-list v-if="emails && compose === false" :emails="mailsToShow" @addFolder="updateFolder"/>
+            <email-list v-if="emails && compose === false" :emails="mailsToShow" @addFolder="updateFolder" @emailClicked="openDetails"/>
+            <email-details v-if="currMail"/>
           </section>  
         `,
   data() {
@@ -22,6 +24,7 @@ export default {
       emails: null,
       currFolder: 'inbox',
       compose: false,
+      currMail: null,
     };
   },
   methods: {
@@ -52,6 +55,9 @@ export default {
         this.emails = emails
         this.compose = false;
       });
+    },
+    openDetails(emailId) {
+      console.log('Igot the id:',emailId);
     }
   },
   computed: {
@@ -66,6 +72,7 @@ export default {
     emailList,
     emailSideNav,
     emailCompose,
+    emailDetails,
   },
   created() {
     this.loadEmails();
