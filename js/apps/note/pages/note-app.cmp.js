@@ -47,8 +47,8 @@ export default {
     pinnNote(noteId) {
       noteService.changePinnState(noteId).then((notes) => this.updateLists(notes));
     },
-    updateTxt(txt, noteId){
-      noteService.updateTxt(txt, noteId).then((notes)=>this.updateLists(notes));
+    updateTxt(note, noteId, type){
+      noteService.updateTxt(note, noteId, type).then((notes)=>this.updateLists(notes));
     }
   },
   computed: {},
@@ -62,7 +62,12 @@ export default {
     eventBus.$on('updateTxt', (txt, noteId)=>{
       console.log(txt);
       console.log(noteId);
-      this.updateTxt(txt, noteId);
+      this.updateTxt(txt, noteId, 'noteTxt');
+    })
+    eventBus.$on('updateTodos', (noteTodos, noteId) =>{
+      console.log(noteTodos.todos);
+      console.log(noteTodos.title);
+      this.updateTxt(noteTodos, noteId, 'noteTodos');
     })
     eventBus.$on('makeAction', () => {
       console.log('msg was heard!');
