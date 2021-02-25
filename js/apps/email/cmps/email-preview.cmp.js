@@ -3,13 +3,15 @@ export default {
     name: 'emailPreview',
     props: ['email'],
     template: `
-            <section class="email-preview-container flex">
-              <div class="name-circle flex align-center justify-center" :style="setBackground">{{nameInitials}}</div>
-              <div class="email-preview-details flex column space-between">
-                <h4 :class="toggleBold">{{email.sender}}</h4>
-                <h4 :class="toggleBold">{{email.subject}}</h4>
-                <p v-if="!isLongText">{{email.body}}</p>
-                <long-text v-else-if="isLongText" :txt="email.body" :length="length"/>
+            <section class="email-preview-container flex space-between" :class="toggleBcg">
+              <div class="flex align-center">
+                <div class="name-circle flex align-center justify-center" :style="setBackground">{{nameInitials}}</div>
+                <div class="email-preview-details flex column space-between">
+                  <h4 :class="toggleBold">{{email.sender}}</h4>
+                  <h4 :class="toggleBold">{{email.subject}}</h4>
+                  <p v-if="!isLongText">{{email.body}}</p>
+                  <long-text v-else-if="isLongText" :txt="email.body" :length="length"/>
+                </div>
               </div>
               <p class="email-time" :class="toggleBold">{{formattedTime}}</p>
             </section>
@@ -27,10 +29,13 @@ export default {
     },
     computed: {
       formattedTime() {
-        return new Date(this.email.sentAt).toLocaleTimeString();
+        return new Date(this.email.sentAt).toLocaleTimeString().replace(/:\d+ /, ' ');
       },
       toggleBold() {
-        return (this.email.isRead) ? 'bold' : 'notBold';
+        return {'bold': this.email.isRead };
+      },
+      toggleBcg() {
+        return { 'showBcg': this.email.isRead };
       },
       setBackground() {
         return {backgroundColor: this.email.color};

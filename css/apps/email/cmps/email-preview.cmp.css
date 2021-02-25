@@ -4,7 +4,7 @@
 
 .email-preview-container {
   width: 100%;
-  min-height: 100px;
+  min-height: 3rem;
   border: 1px solid grey;
   border-radius: 10px;
   padding: 10px;
@@ -22,14 +22,12 @@
 }
 
 .email-preview-container .email-preview-details {
-  flex-grow: 1;
-  max-width: 70%;
+  max-width: 85%;
   margin-left: 10px;
 }
 
 .email-preview-container h4 {
   margin: 0;
-  /* font-weight: bold; */
 }
 
 .email-preview-container p {
@@ -42,8 +40,9 @@
 
 .bold {
   font-weight: bold;
+  font-family: roboto-bold;
 }
 
-.notBold {
-  font-weight: normal;
+.showBcg {
+  background: rgba(202, 202, 202, 0.493);
 }
