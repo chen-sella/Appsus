@@ -1,8 +1,8 @@
 import { utilService } from '../../../services/util.service.js';
 import { storageService } from '../../../services/async.storage.service.js';
 
-const EMAIL_INBOX_KEY = 'email-inbox';
-var gInbox = [
+const EMAIL_KEY = 'emails';
+var gEmails = [
       {
         id: utilService.getRandId(),
         sender: 'Shmulik Cochav',
@@ -91,14 +91,29 @@ export const emailService = {
   save,
   getById,
   createNewEmail,
-  addFolder,
+  toggleEmailFolder,
 };
 
-function addFolder(emailId) {
-    getById(id)
+function toggleEmailFolder(emailId, folderName) {
+    return getById(emailId)
     .then(email => {
-        email.folders.push('starred')
+        if (email.folders.includes(folderName)) {
+            const folderIdx = email.folders.findIndex(folder => {
+                return folder === folderName;
+            })
+            email.folders.splice(folderIdx, 1);
+        } else {
+            email.folders.push(folderName);
+        }
         console.log('added folder to email:',email);
+        console.log('gInbox', gEmails);
+        return storageService.put(EMAIL_KEY, email)
+        .then(() => {
+            return storageService.query(EMAIL_KEY).then(emails => {
+                console.log('emails got from query:',emails);
+                return emails;
+            })
+        })
     })
 }
 
@@ -114,28 +129,28 @@ function createNewEmail() {
 }
 
 function query() {
-    let inbox = storageService.query(EMAIL_INBOX_KEY);
+    let inbox = storageService.query(EMAIL_KEY);
     if (!inbox || !inbox.length) {
         // inbox = gInbox;
-        utilService.saveToStorage(EMAIL_INBOX_KEY, gInbox);
-        inbox = storageService.query(EMAIL_INBOX_KEY);
+        utilService.saveToStorage(EMAIL_KEY, gEmails);
+        inbox = storageService.query(EMAIL_KEY);
     }
     console.log('getting inbox from storage:',inbox);
   return inbox;
 }
 
 function remove(emailId) {
-  return storageService.remove(EMAIL_INBOX_KEY, emailId);
+  return storageService.remove(EMAIL_KEY, emailId);
 }
 
 function save(email) {
   if (email.id) {
-    return storageService.put(EMAIL_INBOX_KEY, email);
+    return storageService.put(EMAIL_KEY, email);
   } else {
-    return storageService.post(EMAIL_INBOX_KEY, email);
+    return storageService.post(EMAIL_KEY, email);
   }
 }
 
 function getById(id) {
-  return storageService.get(EMAIL_INBOX_KEY, id);
+  return storageService.get(EMAIL_KEY, id);
 }

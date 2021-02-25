@@ -15,22 +15,24 @@ export default {
               </div>
               <div class="flex column space-between align-center">
               <p class="email-time" :class="toggleBold">{{formattedTime}}</p>
-              <img :src="changeStar" class="star-img" @click="toggleStarred">
+              <img :src="changeStar" class="star-img" @click="sendStarEvent">
               </div>
             </section>
         `,
     data() {
       return {
         isLongText: false,
-        length: 40
+        length: 40,
+        folderToToggle: null,
       };
     },
     methods: {
       checkTxtLength() {
         this.isLongText = (this.email.body.length > this.length) ? true : false;
       },
-      toggleStarred() {
-        this.$emit('addFolder', this.email.id)
+      sendStarEvent() {
+        this.folderToToggle = 'starred';
+        this.$emit('sendStarEvent', this.email.id, this.folderToToggle)
       },
     },
     computed: {
