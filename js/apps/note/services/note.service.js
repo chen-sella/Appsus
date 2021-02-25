@@ -1,5 +1,6 @@
 import { utilService } from '../../../services/util.service.js';
 import { storageService } from '../../../services/async.storage.service.js';
+import { eventBus } from '../../../services/event-bus.service.js';
 
 export const noteService = {
   getNotes,
@@ -7,9 +8,10 @@ export const noteService = {
   getColors,
   onImgInput,
   newNote,
-  postNote
+  postNote,
 };
 
+var gImg;
 const NOTE_KEY = 'notesDB';
 
 var gNotes = [
@@ -115,19 +117,26 @@ function getColors() {
 
 function onImgInput(ev) {
   console.log(ev);
-  loadImageFromInput(ev, console.log('img'));
+  loadImageFromInput(ev, returnImg);
+  setTimeout(() => {
+    return gImg.src;
+  }, 3000);
 }
 
 function loadImageFromInput(ev, onImageReady) {
   var reader = new FileReader();
 
-  reader.onload = function (event) {
+  reader.onload = (event) => {
     var img = new Image();
     img.onload = onImageReady.bind(null, img);
     img.src = event.target.result;
     gImg = img;
   };
   reader.readAsDataURL(ev.target.files[0]);
+}
+
+function returnImg() {
+  console.log(gImg.src);
 }
 
 function newNote(type) {
@@ -157,8 +166,8 @@ function newNote(type) {
   };
 }
 
-function postNote(note){
- return storageService.post(NOTE_KEY, note).then(()=>{
+function postNote(note) {
+  return storageService.post(NOTE_KEY, note).then(() => {
     return storageService.query(NOTE_KEY);
- })
+  });
 }

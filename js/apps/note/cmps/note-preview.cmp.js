@@ -4,6 +4,7 @@ import noteImg from '../cmps/note-types/note-img.cmp.js';
 import noteVideo from '../cmps/note-types/note-video.cmp.js';
 import noteControls from './note-controls.cmp.js';
 
+
 export default {
   name: 'notePreview',
   props: ['note', 'colors'],
