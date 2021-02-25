@@ -13,8 +13,8 @@ export default {
                 <div class="input-area-container flex"><input type="text" placeholder="Subject:" name="subject" v-model="newEmail.subject"></div>
                 <textarea v-model="newEmail.body" class="textarea" cols="120" rows="20"></textarea>
                 <div class="flex space-between">
-                  <button>Save</button>
-                  <button>Cancel</button>
+                  <button class="save-btn">Save</button>
+                  <button class="cancel-btn">Cancel</button>
                 </div>
               </form>
             </section>

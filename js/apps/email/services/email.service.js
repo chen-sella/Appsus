@@ -15,7 +15,7 @@ var gEmails = [
     body: 'How are you? Have a nice day',
     isRead: false,
     sentAt: Date.now(),
-    color: utilService.getRandomColor(),
+    color: utilService.getRandBackground(),
     folders: ['inbox', 'starred'],
   },
   {
@@ -31,7 +31,7 @@ var gEmails = [
       'Hi there how are you today? I was wondering if you can please take the pages and show them to your boss, that will be amazing! thanks a lot! see you soon!',
     isRead: true,
     sentAt: Date.now(),
-    color: utilService.getRandomColor(),
+    color: utilService.getRandBackground(),
     folders: ['inbox'],
   },
   {
@@ -46,7 +46,7 @@ var gEmails = [
     body: 'Let me know when is the meeting',
     isRead: false,
     sentAt: Date.now(),
-    color: utilService.getRandomColor(),
+    color: utilService.getRandBackground(),
     folders: ['sent', 'starred'],
   },
   {
@@ -62,7 +62,7 @@ var gEmails = [
       'Let me know when is the meeting I will try to get there on time! If not please contact them and let them know.',
     isRead: true,
     sentAt: Date.now(),
-    color: utilService.getRandomColor(),
+    color: utilService.getRandBackground(),
     folders: ['trash'],
   },
   {
@@ -77,7 +77,7 @@ var gEmails = [
     body: 'How are you? Have a nice day',
     isRead: false,
     sentAt: Date.now(),
-    color: utilService.getRandomColor(),
+    color: utilService.getRandBackground(),
     folders: ['inbox', 'starred'],
   },
   {
@@ -92,7 +92,7 @@ var gEmails = [
     body: 'Let me know when is the meeting',
     isRead: true,
     sentAt: Date.now(),
-    color: utilService.getRandomColor(),
+    color: utilService.getRandBackground(),
     folders: ['inbox'],
   },
   {
@@ -107,7 +107,7 @@ var gEmails = [
     body: 'Let me know when is the meeting',
     isRead: false,
     sentAt: Date.now(),
-    color: utilService.getRandomColor(),
+    color: utilService.getRandBackground(),
     folders: ['sent', 'starred'],
   },
   {
@@ -123,7 +123,7 @@ var gEmails = [
       'Hi there how are you today? I was wondering if you can please take the pages and show them to your boss, that will be amazing! thanks a lot! see you soon!',
     isRead: true,
     sentAt: Date.now(),
-    color: utilService.getRandomColor(),
+    color: utilService.getRandBackground(),
     folders: ['trash'],
   },
 ];
@@ -162,7 +162,7 @@ function createNewEmail(emailInfo) {
   emailInfo.sender = '';
   emailInfo.isRead = false;
   emailInfo.sentAt = Date.now();
-  emailInfo.color = utilService.getRandomColor();
+  emailInfo.color = utilService.getRandBackground();
   emailInfo.folders = ['inbox'];
 
   console.log('new full email:', emailInfo);
