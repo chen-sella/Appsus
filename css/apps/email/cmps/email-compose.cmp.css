@@ -17,13 +17,37 @@
   margin-inline-end: 10px;
 }
 
+.input-area-container {
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+
 .input-area-container input {
-  width: 100%;
-  margin-inline-start: 5px;
-  padding: 5px;
+  width: 95%;
+  padding: 10px;
   border: none;
   background: none;
-  border-bottom: 1px solid rgb(231, 231, 231);
+  outline: none;
+}
+
+.input-area-container input:first-of-type {
+  width: 80%;
+}
+
+.input-area-container .cc-btn,
+.input-area-container .bcc-btn {
+  margin-inline-end: 10px;
+  font-size: 0.9rem;
+}
+
+.textarea {
+  min-height: 320px;
+  padding: 10px;
+  outline: none;
+}
+
+.form-btns-container {
+  justify-self: flex-end;
+  margin: 0;
 }
 
 form button {
@@ -32,20 +56,21 @@ form button {
   border: none;
   cursor: pointer;
   width: 150px;
+  margin-bottom: 20px;
 }
 
 .save-btn {
   margin-inline-start: 20px;
-  background-color: #f8cb66;
+  background-color: #FCBC02;
 }
 
 .cancel-btn {
-  margin-inline-end: 20px;
+  margin-inline-end: 40px;
+  width: 1.3rem;
+  background: none;
 }
 
-/* .input-area-container .textarea {
-  border: none;
-  border-style: none; 
-  border-color: Transparent;
-  border-bottom: 1px solid rgb(231, 231, 231);
-} */
+.trash-icon {
+  font-size: 1.3rem;
+  color: rgb(134, 134, 134);
+}
