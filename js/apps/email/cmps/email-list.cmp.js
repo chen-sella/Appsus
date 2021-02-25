@@ -6,7 +6,7 @@ export default {
     template: `
             <ul class="email-list-container">
               <li v-for="email in emails" :key="email.id" class="clean-list">
-                <email-preview :email="email" @addFolder="addToFolder"/>
+                <email-preview :email="email" @sendStarEvent="shareStarEvent"/>
               </li>
             </ul>   
         `,
@@ -14,8 +14,8 @@ export default {
       return {};
     },
     methods: {
-      addToFolder(emailId) {
-        this.$emit('addFolder', emailId);
+      shareStarEvent(emailId, folderName) {
+        this.$emit('addFolder', emailId, folderName);
       }
     },
     computed: {},
