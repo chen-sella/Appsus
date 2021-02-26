@@ -1,8 +1,10 @@
 import emailPreview from './email-preview.cmp.js';
+import { eventBus } from '../../../services/event-bus.service.js';
+
 
 export default {
     name: 'emailList',
-    props: ['emails','folders','folder'],
+    // props: ['emails','folder'],
     template: `
             <ul class="email-list-container">
               <li v-for="email in emails" :key="email.id" class="clean-list">
@@ -15,23 +17,41 @@ export default {
         `,
     data() {
       return {
-        currFolder: null,
+        emails: null,
+        folder: 'inbox',
       };
     },
     methods: {
       shareStarEvent(emailId, folderName) {
-        this.$emit('addFolder', emailId, folderName);
+        eventBus.$emit('addFolder', emailId, folderName);
       },
-      // openDetails(emailId) {
-      //   this.$emit('emailClicked', emailId);
-      // }
     },
-    computed: {},
+    computed: {
+      
+      
+    },
     components: {
       emailPreview,
     },
     created() {
-
+      eventBus.$on('allEmails', (emails) => {
+        this.emails = emails.filter(email => {
+          return email.folders.includes(this.folder)
+      })
+    })
+    },
+    mounted() {
+      eventBus.$on('emailsByFilter', (filteredMails) => {
+        this.emails = filteredMails;
+    })
+      eventBus.$on('filtered', (folder) => {
+        this.folder = folder;
+    })
+      eventBus.$on('emailsChanged', (emails) => {
+        this.emails = emails.filter(email => {
+          return email.folders.includes(this.folder)
+        })
+      })
     }
   };
   

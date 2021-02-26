@@ -23,16 +23,20 @@ const routes = [
     component: emailApp,
     children: [
       {
-        path: '/email/compose',
+        path: 'compose',
         component: emailCompose,
       },
       {
-        path: '/email/:folder',
+        path: ':folder',
         component: emailList,
       },
       {
-        path: '/email/:folder/:emailId',
+        path: ':emailId',
         component: emailDetails,
+      },
+      {
+        path: '/',
+        component: emailList,
       },
     ],
   },

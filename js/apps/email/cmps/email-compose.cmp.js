@@ -1,4 +1,5 @@
 export default {
+  props:[],
   name: 'emailCompose',
   template: `
             <section class="email-compose-container flex column">

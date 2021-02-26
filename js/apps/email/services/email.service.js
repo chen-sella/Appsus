@@ -192,7 +192,6 @@ function query() {
     utilService.saveToStorage(EMAIL_KEY, gEmails);
     inbox = storageService.query(EMAIL_KEY);
   }
-  console.log('getting inbox from storage:', inbox);
   return inbox;
 }
 
