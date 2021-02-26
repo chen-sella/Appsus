@@ -128,7 +128,7 @@ var gEmails = [
   },
 ];
 
-const folders = ['inbox', 'starred', 'sent', 'trash']
+const folders = ['inbox', 'starred', 'sent', 'trash'];
 
 export const emailService = {
   query,
@@ -138,12 +138,22 @@ export const emailService = {
   createNewEmail,
   toggleEmailFolder,
   getFolders,
+  updateIsRead,
 };
 
-
 function getFolders() {
-console.log('getting folders from service...');
-return folders;
+  console.log('getting folders from service...');
+  return folders;
+}
+
+function updateIsRead(email) {
+  email.isRead = true;
+  return save(email).then((email) => {
+    console.log('email', email);
+    return query().then((emails) => {
+      return emails;
+    });
+  });
 }
 
 function toggleEmailFolder(emailId, folderName) {
@@ -156,10 +166,8 @@ function toggleEmailFolder(emailId, folderName) {
     } else {
       email.folders.push(folderName);
     }
-    return storageService.put(EMAIL_KEY, email)
-    .then(() => {
-      return storageService.query(EMAIL_KEY)
-      .then((emails) => {
+    return storageService.put(EMAIL_KEY, email).then(() => {
+      return storageService.query(EMAIL_KEY).then((emails) => {
         return emails;
       });
     });
@@ -175,11 +183,9 @@ function createNewEmail(emailInfo) {
   emailInfo.folders = ['inbox'];
 
   console.log('new full email:', emailInfo);
-  return storageService.post(EMAIL_KEY, emailInfo)
-  .then(() => {
-    return storageService.query(EMAIL_KEY)
-    .then((emails) => {
-      console.log('emails',emails);
+  return storageService.post(EMAIL_KEY, emailInfo).then(() => {
+    return storageService.query(EMAIL_KEY).then((emails) => {
+      console.log('emails', emails);
       return emails;
     });
   });

@@ -1,10 +1,12 @@
 import longText from '../../../cmps/long-text.cmp.js';
+import { eventBus } from '../../../services/event-bus.service.js';
 export default {
     name: 'emailPreview',
-    props: ['email'],
+    props: ['email', 'folder'],
     template: `
             <section class="email-preview-container flex space-between" :class="toggleBcg" @click="openDetail">
               <div class="flex align-center">
+              <!-- <router-link :to="'/email/'+folder/+email.id"></router-link> -->
                 <div class="name-circle flex align-center justify-center" :style="setBackground">{{nameInitials}}</div>
                 <div class="email-preview-details flex column space-between">
                   <h4 :class="toggleBold">{{email.mailInfo.sender}}</h4>
@@ -35,8 +37,10 @@ export default {
         this.$emit('sendStarEvent', this.email.id, this.folderToToggle)
       },
       openDetail() {
+        eventBus.$emit('mailRead',this.email);
+        console.log('this.email',this.email);
         const emailId = this.email.id;
-        this.$router.push(`/email/:${emailId}`)
+        this.$router.push(`/email/${this.folder}/${emailId}`)
       }
     },
     computed: {
@@ -44,10 +48,10 @@ export default {
         return new Date(this.email.sentAt).toLocaleTimeString().replace(/:\d+ /, ' ');
       },
       toggleBold() {
-        return {'bold': this.email.isRead };
+        return {'bold': !this.email.isRead };
       },
       toggleBcg() {
-        return { 'showBcg': this.email.isRead };
+        return { 'showBcg': !this.email.isRead };
       },
       setBackground() {
         return {backgroundColor: this.email.color};

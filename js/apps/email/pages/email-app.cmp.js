@@ -1,19 +1,20 @@
 import { emailService } from '../services/email.service.js';
 import { eventBus } from '../../../services/event-bus.service.js';
 import emailSideNav from '../cmps/email-side-nav.cmp.js';
+import emailCompose from '../cmps/email-compose.cmp.js';
 
 export default {
   name: 'emailApp',
   template: `
           <section class="email-app-container flex app-main main-container">
             <section class="side-menu-container flex column">
-              <router-link to="/email/compose" tag="button" class="compose-btn flex align-center"><i class="fas fa-plus compose-icon"></i>Compose</router-link>
-              <!-- <router-link tag="button" class="compose-btn" :to="'/email/compose'"><i class="fas fa-plus compose-icon"></i>Compose</router-link> -->
+              <!-- <router-link :to="linkToCompose" tag="button" class="compose-btn flex align-center" @click.native="compose = true"><i class="fas fa-plus compose-icon"></i>Compose</router-link> -->
+              <button class="compose-btn flex align-center" @click="compose = true"><i class="fas fa-plus compose-icon"></i>Compose</button>
               <email-side-nav @filtered="setFilter" :folders="folders"/>
               <!-- <email-side-nav @filtered="setFilter" :folders="folders" :filteredMails="mailsToShow" @getFolder="setFolder"/> -->
             </section>
             <router-view></router-view>
-            <!-- <router-view v-if="compose" @closeCompose="toggleCompose" @onAddMail="addNewMail"></router-view>  -->
+            <email-compose v-if="compose" @onAddMail="addNewMail" @closeCompose="compose = false"></email-compose> 
             <!-- <router-view v-if="emails && compose === false" :folders="folders" :folder="currFolder" :emails="mailsToShow" @addFolder="updateFolder"></router-view> -->
 
 
@@ -31,6 +32,7 @@ export default {
       currMail: null,
       // currMailId: null,
       emailsToShow: null,
+      compose: null,
     };
   },
   methods: {
@@ -71,7 +73,8 @@ export default {
       .then(emails => {
         this.emails = emails
         this.compose = false;
-      });
+        this.$route.params.emails = this.emails;
+      })
     },
     // setFolder(folder) {
     //   this.currFolder = folder;
@@ -79,6 +82,9 @@ export default {
     
   },
   computed: {
+    linkToCompose() {
+      return `/email/${this.currFolder}/compose`;
+    }
   },
   created() {
     this.loadEmails();
@@ -91,8 +97,16 @@ export default {
     eventBus.$on('onAddMail', (newEmail) => {
       this.addNewMail(newEmail);
   });
+  eventBus.$on('mailRead', (email) => {
+    return emailService.updateIsRead(email)
+    .then(emails => {
+     this.emails = emails;
+    }).then(() => eventBus.$emit('emailsChanged', emails))
+
+    })
   },
   components: {
     emailSideNav,
+    emailCompose,
   },
 };

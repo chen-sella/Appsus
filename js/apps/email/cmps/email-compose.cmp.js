@@ -7,6 +7,7 @@ export default {
             <section class="email-compose-container flex column">
               <div class="compose-header flex space-between align-center">
                 <p>New message</p>
+                <!-- <router-link class="x-btn" :to="closeCompose">X</router-link> -->
                 <button class="x-btn" @click="closeCompose">X</button>
               </div>
               <form @submit.prevent="save(newEmail)">
@@ -44,24 +45,34 @@ export default {
           },
           openCc: false,
           openBcc: false,
+          folder: null,
     }
   },
   methods: {
-    closeCompose() {
-      this.$router.push('/email');
-    },
+
     save(newEmail) {
       this.newEmail.body = this.$refs.newEmailBody.innerText;
       eventBus.$emit('onAddMail', newEmail);
-      this.closeCompose();
+      // this.$router.push(`/email/${this.folder}`)
+      // this.closeCompose();
     },
     openInputCc() {
       this.openCc = true;
     },
     openInputBcc() {
       this.openBcc = true;
-    }
+    },
+    closeCompose() {
+      this.$emit('closeCompose');
+    },
   },
-  computed: {},
+  created() {
+      console.log(this.$route.params);
+      this.folder = this.$route.params.currFolder
+      console.log('this.folder',this.folder);
+  },
+  computed: {
+  
+  },
   components: {},
 };
