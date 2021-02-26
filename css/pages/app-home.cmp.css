@@ -72,8 +72,11 @@
   }
   .keep-display {
     width: 95%;
+    margin-block-end: 40px;
   }
   .email-display {
     width: 95%;
+    margin-block-end: 40px;
+
   }
 }
