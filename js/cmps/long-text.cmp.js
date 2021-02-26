@@ -2,7 +2,7 @@ export default {
   props: ['txt', 'length'],
   template: `
         <section class="long-text">
-            <p>Description: {{description}}<button @click="moreText">{{btnText}}</button></p>
+            <p>Description: {{description}}<button @click.stop="moreText">{{btnText}}</button></p>
         </section>
     `,
   data() {

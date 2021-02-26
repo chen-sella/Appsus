@@ -6,7 +6,6 @@ export default {
     template: `
             <nav class="email-side-nav-container flex column">
             <router-link :to="'/email/'+folder" v-for="folder in folders" :key="folder"class="nav-link" @click.native="setFilter(folder)">{{folder}}</router-link>
-                <!-- <a v-for="folder in folders" class="nav-link" @click="setFilter(folder)">{{folder}}</a> -->
             </nav>
         `,
     data() {
