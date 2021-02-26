@@ -1,5 +1,6 @@
+import { emailService } from '../services/email.service.js';
 export default {
-  name: '',
+  name: 'emailDetails',
   template: `
           <section class="email-details-container">
             <h1>Details page</h1>

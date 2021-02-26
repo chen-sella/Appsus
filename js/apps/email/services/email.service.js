@@ -146,12 +146,12 @@ function getFolders() {
   return folders;
 }
 
-function updateIsRead(email) {
-  email.isRead = true;
-  return save(email).then((email) => {
-    console.log('email', email);
-    return query().then((emails) => {
-      return emails;
+function updateIsRead(emailId) {
+  return getById(emailId).then((email) => {
+    email.isRead = true;
+    return storageService.put(EMAIL_KEY, email).then(() => {
+      console.log('email', email);
+      return storageService.query(EMAIL_KEY);
     });
   });
 }
@@ -184,21 +184,18 @@ function createNewEmail(emailInfo) {
 
   console.log('new full email:', emailInfo);
   return storageService.post(EMAIL_KEY, emailInfo).then(() => {
-    return storageService.query(EMAIL_KEY).then((emails) => {
-      console.log('emails', emails);
-      return emails;
-    });
+    return storageService.query(EMAIL_KEY);
   });
 }
 
 function query() {
-  let inbox = storageService.query(EMAIL_KEY);
-  if (!inbox || !inbox.length) {
-    // inbox = gInbox;
-    utilService.saveToStorage(EMAIL_KEY, gEmails);
-    inbox = storageService.query(EMAIL_KEY);
-  }
-  return inbox;
+  return storageService.query(EMAIL_KEY).then((emails) => {
+    if (emails.length === 0) {
+      utilService.saveToStorage(EMAIL_KEY, gEmails);
+      emails = utilService.loadFromStorage(EMAIL_KEY);
+    }
+    return Promise.resolve(emails);
+  });
 }
 
 function remove(emailId) {

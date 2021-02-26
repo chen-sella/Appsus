@@ -1,3 +1,4 @@
+import { eventBus } from '../../../services/event-bus.service.js';
 import { emailService } from '../services/email.service.js';
 import emailPreview from './email-preview.cmp.js';
 
@@ -32,8 +33,15 @@ export default {
       this.emailsToShow = emailsToShow;
     },
     openDetails(emailId) {
-      console.log('clicked the preview');
       this.$router.push(`/email/${this.folder}/${emailId}`);
+    },
+    changeIsRead() { ///this function needs to be called after closing details
+      console.log('clicked the preview');
+      emailService.updateIsRead(emailId)
+      .then(emails => {
+       this.emails = emails;
+       this.mailsToShow();
+      })
     },
     updateFolder(emailId, folderName) {
       emailService.toggleEmailFolder(emailId, folderName)
@@ -42,6 +50,8 @@ export default {
         this.mailsToShow();
       });
     },
+    
+      
   },
   components: {
     emailPreview,
@@ -56,4 +66,10 @@ export default {
   created() {
     this.loadEmails();
   },
+  mounted() {
+    eventBus.$on('storageUpdated', () => {
+      console.log('got new email');
+      this.loadEmails();
+    })
+  }
 };

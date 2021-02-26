@@ -10,7 +10,7 @@ export default {
             <section class="side-menu-container flex column">
               <!-- <router-link :to="linkToCompose" tag="button" class="compose-btn flex align-center" @click.native="compose = true"><i class="fas fa-plus compose-icon"></i>Compose</router-link> -->
               <button class="compose-btn flex align-center" @click="compose = true"><i class="fas fa-plus compose-icon"></i>Compose</button>
-              <email-side-nav @filtered="setFilter" :folders="folders"/>
+              <email-side-nav :folders="folders"/>
               <!-- <email-side-nav @filtered="setFilter" :folders="folders" :filteredMails="mailsToShow" @getFolder="setFolder"/> -->
             </section>
             <router-view></router-view>
@@ -26,84 +26,75 @@ export default {
         `,
   data() {
     return {
-      emails: null,
       folders: null,
-      currFolder: 'inbox',
-      currMail: null,
-      // currMailId: null,
-      emailsToShow: null,
       compose: null,
+      // emails: null,
+      // currFolder: 'inbox',
+      // currMail: null,
+      // currMailId: null,
+      // emailsToShow: null,
     };
   },
   methods: {
-    loadEmails() {
-      emailService.query()
-          .then(emails => {
-            this.emails = emails
-            // const inboxMails = this.mailsToShow();
-            eventBus.$emit('allEmails', emails);
-          })
-    },
+    // loadEmails() {
+    //   emailService.query()
+    //       .then(emails => {
+    //         this.emails = emails
+    //         // const inboxMails = this.mailsToShow();
+    //         eventBus.$emit('allEmails', emails);
+    //       })
+    // },
 
     getFolders() {
       this.folders = emailService.getFolders()
     },
 
-    setFilter(filterBy) {
-      this.currFolder = filterBy;
-      this.mailsToShow();
-    },
-    mailsToShow() {
-      this.emailsToShow = this.emails.filter(email => {
-          return email.folders.includes(this.currFolder)
-      })
-      eventBus.$emit('emailsByFilter', this.emailsToShow);
-      return this.emailsToShow;
-  },
-    // updateFolder(emailId, folderName) {
-    //   emailService.toggleEmailFolder(emailId, folderName)
-    //   .then(emails => {
-    //     this.emails = emails;
-    //     eventBus.$emit('emailsChanged', this.emails);
-    //   });
+    // setFilter(filterBy) {
+    //   this.currFolder = filterBy;
+    //   this.mailsToShow();
     // },
+  //   mailsToShow() {
+  //     this.emailsToShow = this.emails.filter(email => {
+  //         return email.folders.includes(this.currFolder)
+  //     })
+  //     eventBus.$emit('emailsByFilter', this.emailsToShow);
+  //     return this.emailsToShow;
+  // },
  
     addNewMail(emailInfo) {
-      return emailService.createNewEmail(emailInfo)
-      .then(emails => {
-        this.emails = emails
+      emailService.createNewEmail(emailInfo)
+      .then((emails) => {
+        console.log('emails',emails);
         this.compose = false;
-        this.$route.params.emails = this.emails;
+        console.log('heared');
+        eventBus.$emit('storageUpdated');
       })
     },
-    // setFolder(folder) {
-    //   this.currFolder = folder;
-    // },
     
   },
-  computed: {
-    linkToCompose() {
-      return `/email/${this.currFolder}/compose`;
-    }
-  },
+  // computed: {
+  //   linkToCompose() {
+  //     return `/email/${this.currFolder}/compose`;
+  //   }
+  // },
   created() {
-    this.loadEmails();
+    // this.loadEmails();
     this.getFolders();
   },
   mounted() {
-    eventBus.$on('addFolder', (emailId, folderName) => {
-      this.updateFolder(emailId, folderName);
-    });
+    // eventBus.$on('addFolder', (emailId, folderName) => {
+    //   this.updateFolder(emailId, folderName);
+    // });
     eventBus.$on('onAddMail', (newEmail) => {
       this.addNewMail(newEmail);
   });
-  eventBus.$on('mailRead', (email) => {
-    return emailService.updateIsRead(email)
-    .then(emails => {
-     this.emails = emails;
-    }).then(() => eventBus.$emit('emailsChanged', emails))
+  // eventBus.$on('mailRead', (email) => {
+  //   return emailService.updateIsRead(email)
+  //   .then(emails => {
+  //    this.emails = emails;
+  //   }).then(() => eventBus.$emit('emailsChanged', emails))
 
-    })
+  //   })
   },
   components: {
     emailSideNav,

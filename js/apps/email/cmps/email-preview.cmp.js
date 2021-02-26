@@ -4,7 +4,7 @@ export default {
     name: 'emailPreview',
     props: ['email', 'folder'],
     template: `
-            <section class="email-preview-container flex space-between" :class="toggleBcg" @click="openDetail">
+            <section class="email-preview-container flex space-between" :class="toggleBcg">
               <div class="flex align-center">
               <!-- <router-link :to="'/email/'+folder/+email.id"></router-link> -->
                 <div class="name-circle flex align-center justify-center" :style="setBackground">{{nameInitials}}</div>
@@ -36,12 +36,12 @@ export default {
         this.folderToToggle = 'starred';
         this.$emit('sendStarEvent', this.email.id, this.folderToToggle)
       },
-      openDetail() {
-        eventBus.$emit('mailRead',this.email);
-        console.log('this.email',this.email);
-        const emailId = this.email.id;
-        this.$router.push(`/email/${this.folder}/${emailId}`)
-      }
+      // openDetail() {
+      //   eventBus.$emit('mailRead',this.email);
+      //   console.log('this.email',this.email);
+      //   const emailId = this.email.id;
+      //   this.$router.push(`/email/${this.folder}/${emailId}`)
+      // }
     },
     computed: {
       formattedTime() {

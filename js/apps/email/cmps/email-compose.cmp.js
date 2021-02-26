@@ -7,7 +7,6 @@ export default {
             <section class="email-compose-container flex column">
               <div class="compose-header flex space-between align-center">
                 <p>New message</p>
-                <!-- <router-link class="x-btn" :to="closeCompose">X</router-link> -->
                 <button class="x-btn" @click="closeCompose">X</button>
               </div>
               <form @submit.prevent="save(newEmail)">
@@ -68,7 +67,7 @@ export default {
   },
   created() {
       console.log(this.$route.params);
-      this.folder = this.$route.params.currFolder
+      this.folder = this.$route.params.folder
       console.log('this.folder',this.folder);
   },
   computed: {
