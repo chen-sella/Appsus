@@ -1,17 +1,12 @@
 import { emailService } from '../services/email.service.js';
 import emailPreview from './email-preview.cmp.js';
-import { eventBus } from '../../../services/event-bus.service.js';
 
 export default {
   name: 'emailList',
   template: `
-            <ul v-if="emailsTo"class="email-list-container">
-              <li v-for="email in emails" :key="email.id" class="clean-list">
-                <!-- <router-link :to="'/email/'+folder/+email.id"></router-link> -->
-                <!-- <router-link :to="'/email/'+folder/+email.id"><email-preview :email="email" @sendStarEvent="shareStarEvent" @click.native="openDetails"/></router-link> -->
-                <email-preview :email="email" @sendStarEvent="shareStarEvent" @click.native="openDetails" :folder="folder"></email-preview>
-                <!-- <router-link :to="'/car/'+car.id">Details</router-link> -->
-                <!-- <router-link :to="'/car/edit/'+car.id">Edit</router-link> -->
+            <ul v-if="emails"class="email-list-container">
+              <li v-for="email in emailsToShow" :key="email.id" class="clean-list">
+                <email-preview :email="email" @sendStarEvent="updateFolder" @click.native="openDetails(email.id)" :folder="folder"></email-preview>
               </li>
             </ul>   
         `,
@@ -19,52 +14,46 @@ export default {
     return {
       emails: null,
       folder: 'inbox',
+      emailsToShow: null,
       currEmailId: null,
-      emailsTo: null,
     };
   },
   methods: {
     loadEmails() {
-      emailService.query()
-          .then(emails => {
-            this.emails = emails
-            // const inboxMails = this.mailsToShow();
-            eventBus.$emit('allEmails', emails);
-          })
+      emailService.query().then((emails) => {
+        this.emails = emails;
+        this.mailsToShow();
+      });
     },
-    shareStarEvent(emailId, folderName) {
-      this.currEmailId = emailId;
-      eventBus.$emit('addFolder', emailId, folderName);
+    mailsToShow() {
+      const emailsToShow = this.emails.filter((email) => {
+        return email.folders.includes(this.folder);
+      });
+      this.emailsToShow = emailsToShow;
     },
-    openDetails() {
+    openDetails(emailId) {
       console.log('clicked the preview');
+      this.$router.push(`/email/${this.folder}/${emailId}`);
+    },
+    updateFolder(emailId, folderName) {
+      emailService.toggleEmailFolder(emailId, folderName)
+      .then(emails => {
+        this.emails = emails;
+        this.mailsToShow();
+      });
     },
   },
-  computed: {},
   components: {
     emailPreview,
   },
+  watch: {
+    '$route.params.folder'(folder) {
+      this.folder = folder;
+      console.log('this.folder',this.folder);
+      this.mailsToShow();
+    },
+  },
   created() {
     this.loadEmails();
-    // this.emailsTo = this.$route.params.emails;
-    // console.log(this.$route.params.emails);
-    // eventBus.$on('allEmails', (emails) => {
-    //   this.emails = emails.filter((email) => {
-    //     return email.folders.includes(this.folder);
-    //   });
-    // });
-  },
-  mounted() {
-    eventBus.$on('emailsByFilter', (filteredMails) => {
-      this.emails = filteredMails;
-    });
-    eventBus.$on('filtered', (folder) => {
-      this.folder = folder;
-    });
-    eventBus.$on('emailsChanged', (emails) => {
-      this.emails = emails.filter((email) => {
-        return email.folders.includes(this.folder);
-      });
-    });
   },
 };

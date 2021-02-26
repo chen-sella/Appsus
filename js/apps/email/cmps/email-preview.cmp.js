@@ -17,7 +17,7 @@ export default {
               </div>
               <div class="flex column space-between align-center">
               <p class="email-time" :class="toggleBold">{{formattedTime}}</p>
-              <img :src="changeStar" class="star-img" @click="sendStarEvent">
+              <img :src="changeStar" class="star-img" @click.stop="sendStarEvent">
               </div>
             </section>
         `,

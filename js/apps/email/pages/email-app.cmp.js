@@ -60,13 +60,13 @@ export default {
       eventBus.$emit('emailsByFilter', this.emailsToShow);
       return this.emailsToShow;
   },
-    updateFolder(emailId, folderName) {
-      emailService.toggleEmailFolder(emailId, folderName)
-      .then(emails => {
-        this.emails = emails;
-        eventBus.$emit('emailsChanged', this.emails);
-      });
-    },
+    // updateFolder(emailId, folderName) {
+    //   emailService.toggleEmailFolder(emailId, folderName)
+    //   .then(emails => {
+    //     this.emails = emails;
+    //     eventBus.$emit('emailsChanged', this.emails);
+    //   });
+    // },
  
     addNewMail(emailInfo) {
       return emailService.createNewEmail(emailInfo)
