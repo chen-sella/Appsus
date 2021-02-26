@@ -34,8 +34,9 @@ export default {
     },
     openDetails(emailId) {
       this.$router.push(`/email/${this.folder}/${emailId}`);
+      this.changeIsRead(emailId);
     },
-    changeIsRead() { ///this function needs to be called after closing details
+    changeIsRead(emailId) { ///this function needs to be called after closing details
       console.log('clicked the preview');
       emailService.updateIsRead(emailId)
       .then(emails => {

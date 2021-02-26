@@ -174,16 +174,16 @@ function toggleEmailFolder(emailId, folderName) {
   });
 }
 
-function createNewEmail(emailInfo) {
-  emailInfo.id = utilService.getRandId();
-  emailInfo.sender = 'David Cohen';
-  emailInfo.isRead = false;
-  emailInfo.sentAt = Date.now();
-  emailInfo.color = utilService.getRandBackground();
-  emailInfo.folders = ['inbox'];
+function createNewEmail(composedMail) {
+  composedMail.id = utilService.getRandId();
+  composedMail.mailInfo.sender = 'David Cohen';
+  composedMail.isRead = false;
+  composedMail.sentAt = Date.now();
+  composedMail.color = utilService.getRandBackground();
+  composedMail.folders = ['inbox'];
 
-  console.log('new full email:', emailInfo);
-  return storageService.post(EMAIL_KEY, emailInfo).then(() => {
+  console.log('new full email:', composedMail);
+  return storageService.post(EMAIL_KEY, composedMail).then(() => {
     return storageService.query(EMAIL_KEY);
   });
 }
