@@ -19,8 +19,9 @@ const routes = [
     component: noteApp,
   },
   {
-    path: '/email/',
+    path: '/email',
     component: emailApp,
+    redirect: '/email/inbox',
     children: [
       {
         path: ':folder',
@@ -34,10 +35,10 @@ const routes = [
         path: ':folder/:emailId',
         component: emailDetails,
       },
-      {
-        path: '/',
-        component: emailList,
-      },
+      // {
+      //   path: '/',
+      //   component: emailList,
+      // },
     ],
   },
   // {

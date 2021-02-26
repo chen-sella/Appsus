@@ -1,3 +1,4 @@
+import { emailService } from '../services/email.service.js';
 import emailPreview from './email-preview.cmp.js';
 import { eventBus } from '../../../services/event-bus.service.js';
 
@@ -23,6 +24,14 @@ export default {
     };
   },
   methods: {
+    loadEmails() {
+      emailService.query()
+          .then(emails => {
+            this.emails = emails
+            // const inboxMails = this.mailsToShow();
+            eventBus.$emit('allEmails', emails);
+          })
+    },
     shareStarEvent(emailId, folderName) {
       this.currEmailId = emailId;
       eventBus.$emit('addFolder', emailId, folderName);
@@ -36,13 +45,14 @@ export default {
     emailPreview,
   },
   created() {
-    this.emailsTo = this.$route.params.emails;
-    console.log(this.$route.params.emails);
-    eventBus.$on('allEmails', (emails) => {
-      this.emails = emails.filter((email) => {
-        return email.folders.includes(this.folder);
-      });
-    });
+    this.loadEmails();
+    // this.emailsTo = this.$route.params.emails;
+    // console.log(this.$route.params.emails);
+    // eventBus.$on('allEmails', (emails) => {
+    //   this.emails = emails.filter((email) => {
+    //     return email.folders.includes(this.folder);
+    //   });
+    // });
   },
   mounted() {
     eventBus.$on('emailsByFilter', (filteredMails) => {
