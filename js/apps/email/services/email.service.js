@@ -168,7 +168,7 @@ function toggleEmailFolder(emailId, folderName) {
 
 function createNewEmail(emailInfo) {
   emailInfo.id = utilService.getRandId();
-  emailInfo.sender = '';
+  emailInfo.sender = 'David Cohen';
   emailInfo.isRead = false;
   emailInfo.sentAt = Date.now();
   emailInfo.color = utilService.getRandBackground();

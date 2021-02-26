@@ -88,6 +88,9 @@ export default {
     eventBus.$on('addFolder', (emailId, folderName) => {
       this.updateFolder(emailId, folderName);
     });
+    eventBus.$on('onAddMail', (newEmail) => {
+      this.addNewMail(newEmail);
+  });
   },
   components: {
     emailSideNav,
