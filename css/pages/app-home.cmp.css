@@ -1,3 +1,47 @@
-* {
-  box-sizing: border-box;
+.home-page{
+  background-color: #f6f0e80d;
+  text-align: center;
+  font-family: roboto-bold;
+}
+.home-page h2{
+  margin: 0;
+  font-size: 30px;
+  padding: 80px;
+}
+.keep-display {
+  justify-content: flex-start;
+  font-family: roboto;
+
+}
+
+.keep-display p {
+  font-size: 26px;
+  margin-block-end: 20px;
+}
+
+
+.keep-display img {
+  width: 65%;
+  box-shadow: 5px 5px 15px 5px #727272;
+}
+
+.home-nav-link{
+  font-family: roboto;
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 22px;
+  background-color: #CBF0F8;
+  border: 1px solid #CBF0F8;
+  border-radius: 10px;
+  transition: 1s;
+
+}
+
+.home-nav-link:hover{
+  background-color: transparent;
+}
+
+.email-display p{
+  font-family: roboto;
+  font-size: 26px;
 }
