@@ -139,6 +139,7 @@ export const emailService = {
   toggleEmailFolder,
   getFolders,
   updateIsRead,
+  onDeleteMail
 };
 
 function getFolders() {
@@ -146,9 +147,9 @@ function getFolders() {
   return folders;
 }
 
-function updateIsRead(emailId) {
+function updateIsRead(emailId, isToUnread) {
   return getById(emailId).then((email) => {
-    email.isRead = true;
+    (isToUnread) ? email.isRead = false : email.isRead = true;
     return storageService.put(EMAIL_KEY, email).then(() => {
       console.log('email', email);
       return storageService.query(EMAIL_KEY);
@@ -156,8 +157,18 @@ function updateIsRead(emailId) {
   });
 }
 
+function onDeleteMail(emailId) {
+  console.log('going to delete...');
+  // toggleEmailFolder(emailId,'trash')
+  // .then(() => getById(emailId))
+  // .then(email => {
+  //   const copiedMail = email
+  // })
+}
+
 function toggleEmailFolder(emailId, folderName) {
   return getById(emailId).then((email) => {
+    if (email.folders.includes('trash')) return; 
     if (email.folders.includes(folderName)) {
       const folderIdx = email.folders.findIndex((folder) => {
         return folder === folderName;

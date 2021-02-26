@@ -38,7 +38,7 @@ export default {
     },
     changeIsRead(emailId) { 
       console.log('clicked the preview');
-      emailService.updateIsRead(emailId)
+      emailService.updateIsRead(emailId, false)
       .then(emails => {
        this.emails = emails;
        this.mailsToShow();

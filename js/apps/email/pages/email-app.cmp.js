@@ -8,7 +8,7 @@ export default {
   template: `
           <section class="email-app-container flex app-main main-container">
             <section class="side-menu-container flex column">
-              <button class="compose-btn flex align-center" @click="compose = true"><i class="fas fa-plus compose-icon"></i>Compose</button>
+              <button class="compose-btn flex align-center" @click="compose = !compose"><i class="fas fa-plus compose-icon"></i>Compose</button>
               <email-side-nav :folders="folders"/>
             </section>
             <router-view></router-view>

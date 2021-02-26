@@ -27,28 +27,16 @@ const routes = [
         path: ':folder',
         component: emailList,
       },
-      // {
-      //   path: ':currFolder/compose',
-      //   component: emailCompose,
-      // },
       {
         path: ':folder/:emailId',
         component: emailDetails,
       },
-      // {
-      //   path: '/',
-      //   component: emailList,
-      // },
     ],
   },
-  // {
-  //   path: '/email/compose',
-  //   component: emailCompose,
-  // },
-  // {
-  //   path: '/email/:emailId',
-  //   component: emailDetails,
-  // },
+  {
+    path: '/email/compose',
+    component: emailCompose,
+  },
 ];
 
 export const myRouter = new VueRouter({ routes });
