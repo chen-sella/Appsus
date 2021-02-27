@@ -5,7 +5,10 @@ export default {
     name: 'emailSideNav',
     template: `
             <nav class="email-side-nav-container flex column">
-            <router-link :to="'/email/'+folder" v-for="folder in folders" :key="folder"class="nav-link" @click.native="setFilter(folder)">{{folder}}</router-link>
+            <router-link :to="'/email/'+folder" v-for="folder in folders" :key="folder"class="nav-link" @click.native="setFilter(folder)">
+            <i class="folder-icon fas fa-bookmark fa-rotate-270"></i>
+            <p class="folder-name">{{folder}}</p>
+            </router-link>
             </nav>
         `,
     data() {
