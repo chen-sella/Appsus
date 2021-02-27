@@ -48,7 +48,12 @@ export default {
       noteService.changePinnState(noteId).then((notes) => this.updateLists(notes));
     },
     updateTxt(note, noteId, type){
-      noteService.updateTxt(note, noteId, type).then((notes)=>this.updateLists(notes));
+      noteService.updateTxt(note, noteId, type).then((notes)=>this.updateLists(notes))
+      console.log('updating');
+      const msg = {
+        txt: 'Note was update successfuly',
+      };
+      eventBus.$emit('show-msg', msg);;
     }
   },
   computed: {},
