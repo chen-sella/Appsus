@@ -81,7 +81,7 @@ form button {
   color: rgb(134, 134, 134);
 }
 
-@media (max-width: 750px) {
+@media (max-width: 425px) {
   .email-compose-container {
     width: 300px;
   }

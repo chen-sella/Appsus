@@ -6,10 +6,10 @@ export default {
   template: `
         <section class="note-img">
           <img :src="info.url">
-          <div class="saveEdits-container">
+          <div class="saveEdits-container flex">
             <transition name="fade">
               <div v-if="saveEdits" class="saveEdits" @click="updateTxt">
-                <i class="fas fa-save"></i>
+                <i class="fas fa-check"></i>
               </div>
             </transition>
           </div>

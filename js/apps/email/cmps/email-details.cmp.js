@@ -92,7 +92,8 @@ export default {
       return `/email/${this.folder}`;
     },
     setBackground() {
-      return { backgroundColor: this.email.color };
+      return {backgroundColor: this.email.style.backgroundColor,
+        borderColor: this.email.style.borderColor};
     },
     nameInitials() {
       const name = this.email.mailInfo.sender;

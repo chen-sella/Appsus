@@ -5,10 +5,10 @@ export default {
   props: ['info', 'id'],
   template: `
     <section class="note-txt">
-      <div class="saveEdits-container">
+      <div class="saveEdits-container flex">
       <transition name="fade">
           <div v-if="saveEdits" class="saveEdits" @click="updateTxt">
-            <i class="fas fa-save"></i>
+            <i class="fas fa-check"></i>
           </div>
         </transition>
       </div>
@@ -23,6 +23,7 @@ export default {
   },
   methods: {
     updateTxt() {
+      console.log('saving');
       console.log(this.$refs.txtTitle.innerText);
       const title = this.$refs.txtTitle.innerText;
       const txt = this.$refs.txtPara.innerText;

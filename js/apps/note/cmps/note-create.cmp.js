@@ -5,15 +5,15 @@ export default {
   template: `
         <section class="note-create flex space-between">
           <div class="input-container flex column">
-            <input type="text" v-if="type" v-model="title" placeholder="Enter title...">
-            <input type="text" :placeholder="flaceHolder" v-model="txt">
+            <input type="text" @keyup.enter="fillInfo" v-if="type" v-model="title" placeholder="Enter title...">
+            <input type="text" @keyup.enter="fillInfo" :placeholder="flaceHolder" v-model="txt">
           </div>
           <ul class="type-controllers clean-list flex">
             <li @click="setType('noteTxt')"><i class="fas fa-font"></i></li>
             <li @click="setType('noteImg')"><i class="fas fa-image"></i>
             <li @click="setType('noteTodos')"><i class="fas fa-list"></i></li>
-            <transition name="fade">
-              <li v-if="type" @click="fillInfo"><i class="fas fa-save"></i></li>
+            <transition name="fade-save">
+              <li v-if="type" @click="fillInfo"><i class="fas fa-check"></i></li>
             </transition>
           </ul>
         </section>

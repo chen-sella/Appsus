@@ -1,6 +1,6 @@
 .note-update-list{
   justify-content: flex-start;
-  color: #5c5c5cda;
+  color:black;
 }
 
 .note-update-list li{
@@ -12,7 +12,6 @@
   background-color: rgba(219, 219, 219, 0.664);
   border-radius: 50%;
 }
-
 
 .palette-icon{
   position: relative;
@@ -38,6 +37,5 @@
   border: 0.5px solid #8080809e;
   cursor: pointer;
   break-inside: avoid;
-
 }
 

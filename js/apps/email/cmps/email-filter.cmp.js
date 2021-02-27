@@ -1,33 +1,32 @@
 export default {
-    name: 'emailFilter',
-    template: `
+  name: 'emailFilter',
+  template: `
             <section class="email-filter-section flex">
               <input type="search" placeholder="Search mail" v-model="filterBy.strSearch" @input="searchByStr">
-              <select name="readSort" v-model="filterBy.readSearch" @change="sortByIsRead">
-                <option value="all">All</option>
+              <select  name="readSort" v-model="filterBy.readSearch" @change="sortByIsRead">
+                <option selected value="all">All</option>
                 <option value="read">Read</option>
                 <option value="unread">Unread</option>
               </select>
             </section>
         `,
-    data() {
-      return {
-        filterBy: {
-          strSearch: '',
-          readSearch: '',
-        },
-      }
-    },
-    methods: {
-      searchByStr() {
-        this.$emit('strSortBy', this.filterBy.strSearch);
+  data() {
+    return {
+      filterBy: {
+        strSearch: '',
+        readSearch: 'all',
       },
-      sortByIsRead() {
-        console.log('Im sorting by:',this.filterBy.readSearch);
-        this.$emit('readSortRead', this.filterBy.readSearch);
-      }
+    };
+  },
+  methods: {
+    searchByStr() {
+      this.$emit('strSortBy', this.filterBy.strSearch);
     },
-    computed: {},
-    components: {},
-  };
-  
+    sortByIsRead() {
+      console.log('Im sorting by:', this.filterBy.readSearch);
+      this.$emit('readSortRead', this.filterBy.readSearch);
+    },
+  },
+  computed: {},
+  components: {},
+};

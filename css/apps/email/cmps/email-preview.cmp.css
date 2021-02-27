@@ -10,8 +10,8 @@
 }
 
 .email-preview-container .name-circle {
-  min-width: 70px;
-  height: 70px;
+  min-width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: rgb(117, 221, 190);
   border: 1px solid grey;
@@ -61,11 +61,11 @@
     font-size: 1rem;
   }
   .email-preview-container {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .time-container {
-    min-width: 45px;
+    min-width: 50px;
   }
 
 }

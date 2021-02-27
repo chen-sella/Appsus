@@ -49,8 +49,8 @@ h4, p {
 }
 
 .header-info-container .name-circle {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: rgb(117, 221, 190);
   border: 1px solid grey;

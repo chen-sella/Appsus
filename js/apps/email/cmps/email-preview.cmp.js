@@ -49,7 +49,7 @@ export default {
       setBackground() {
         console.log('this.email.style',this.email.style);
         return {backgroundColor: this.email.style.backgroundColor,
-                border: this.email.style.borderColor};
+                borderColor: this.email.style.borderColor};
       },
       nameInitials() {
         const name = this.email.mailInfo.sender;

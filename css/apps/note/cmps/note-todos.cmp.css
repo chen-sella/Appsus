@@ -4,11 +4,19 @@
 
 .note-todos h3 {
   font-family: roboto-bold;
+  outline: none;
+}
+
+.note-todos li{
+  outline: none;
 }
 
 .saveEdits-container {
   height: 20px;
-  color: #5c5c5cda;
+  justify-content: flex-end;
+  margin-inline-end: 10px;
+  color: black;
+  font-size: 20px;
 }
 
 .fade-enter-active,

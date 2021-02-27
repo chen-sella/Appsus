@@ -27,10 +27,11 @@
 .keep-display p {
   font-size: 20px;
   margin-block-end: 20px;
+  margin-block-start: 20px;
 }
 
 .keep-display img {
-  width: 80%;
+  width: 60%;
   box-shadow: 5px 5px 15px 5px #727272;
 }
 
@@ -63,12 +64,17 @@
 .email-display p {
   font-family: roboto;
   font-size: 20px;
+  margin-block-end: 20px;
+  margin-block-start: 20px;
 }
 
 @media (max-width: 1200px) {
   .home-container {
     flex-direction: column;
     align-items: center;
+  }
+  .keep-display img {
+    width: 70%;
   }
   .keep-display {
     width: 95%;

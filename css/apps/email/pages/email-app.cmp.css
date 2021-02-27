@@ -1,12 +1,13 @@
 .side-menu-container {
   min-width: 200px;
-  box-shadow: 4px 5px 8px 0px rgba(117, 117, 117, 0.75);
+  box-shadow: 4px 0 3px rgba(117, 117, 117, 0.45);
 }
 
 .email-app-container .compose-btn {
   padding: 15px;
   border-radius: 40px;
-  margin: 20px 15px 0;
+  margin: 20px 0;
+  margin-inline-end: 10px;
   font-size: 20px;
   border: none;
   cursor: pointer;
