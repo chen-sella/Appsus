@@ -31,6 +31,7 @@ export default {
         this.isLongText = (this.email.body.length > this.length) ? true : false;
       },
       sendStarEvent() {
+        if (this.email.folders.includes('trash')) return;
         this.folderToToggle = 'starred';
         this.$emit('sendStarEvent', this.email.id, this.folderToToggle)
       },

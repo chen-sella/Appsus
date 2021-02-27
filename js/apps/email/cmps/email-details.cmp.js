@@ -8,7 +8,8 @@ export default {
               <router-link :to="goBack" class="back-arrow">&#8592;</router-link>
               <div class="flex align-center">
                 <a href="#" @click="markAsUnread"><i class="far fa-envelope unread-icon"></i></a>
-                <a href="#" @click="deleteMail"><i class="fas fa-trash-alt trash-icon"></i></a>
+                <a v-if="!isInTrash" href="#" @click="deleteMail"><i class="fas fa-trash-alt trash-icon"></i></a>
+                <a v-if="isInTrash" href="#" @click="unDeleteMail"><i class="fas fa-trash-restore-alt trash-icon"></i></a>
               </div>
             </div>
             <div class="header-info-container flex align-center space-between">
@@ -39,6 +40,7 @@ export default {
       emailId: null,
       email: null,
       folder: null,
+      isInTrash: false,
     };
   },
   methods: {
@@ -67,6 +69,17 @@ export default {
           this.$router.push(`/email/${this.folder}`);
         })
     },
+    unDeleteMail() {
+      return emailService.removeFromTrash(this.emailId)
+        .then(() => {
+          emailService.getById(this.emailId);
+        })
+        .then((email) => {
+          this.email = email
+          // this.folder = this.$route.params.folder;
+          this.$router.push('/email/inbox');
+        })
+    }
   },
   computed: {
     goBack() {
@@ -105,8 +118,8 @@ export default {
     this.emailId = this.$route.params.emailId;
     emailService.getById(this.emailId).then((email) => {
       this.email = email;
+      if (this.email.folders.includes('trash')) this.isInTrash = true;
       console.log('this.currEmail', this.email);
     });
   },
-  components: {},
 };
