@@ -4,7 +4,7 @@ export default {
           <header class="app-header">
           <div class="header-content-container main-container flex space-between align-center">
               <div class="logo">
-                  <h1>Appsus</h1>
+                <router-link class="logo nav-link" to="/">Appsus<span>.</span></router-link>
               </div>
               <nav class="flex">
                   <div class="nav-container" @click="toggleNav">

@@ -40,3 +40,12 @@
   background-color: rgba(219, 219, 219, 0.664);;
   border-radius: 50%;
 } 
+
+.logo{
+  font-size: 2rem;
+  font-family: roboto-bold;
+}
+
+.logo span{
+  color: white;
+}

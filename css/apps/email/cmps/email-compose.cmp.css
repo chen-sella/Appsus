@@ -83,6 +83,6 @@ form button {
 
 @media (max-width: 750px) {
   .email-compose-container {
-    width: 340px;
+    width: 300px;
   }
 }

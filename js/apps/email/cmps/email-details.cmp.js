@@ -1,3 +1,4 @@
+import { eventBus } from '../../../services/event-bus.service.js';
 import { emailService } from '../services/email.service.js';
 
 export default {
@@ -59,6 +60,10 @@ export default {
       });
     },
     deleteMail() {
+      const msg = {
+        txt: 'Email moved to Trash',
+      };
+      eventBus.$emit('show-msg', msg);
       return emailService.toggleEmailFolder(this.emailId, 'trash')
         .then(() => {
           emailService.getById(this.emailId);
@@ -76,7 +81,7 @@ export default {
         })
         .then((email) => {
           this.email = email
-          this.$router.push('/email/inbox');
+            this.$router.push('/email/inbox');
         })
     }
   },
