@@ -68,7 +68,7 @@ var gNotes = [
     info: {
       title: 'Chores for Leetal:',
       todos: [
-        { txt: 'Take put the dogs', doneAt: 187111111 },
+        { txt: 'Take out the dogs', doneAt: 187111111 },
         { txt: 'Do not spill coffee', doneAt: null },
         { txt: 'Rest', doneAt: null },
         { txt: 'Be Amazing', doneAt: 187111111 },
@@ -84,7 +84,7 @@ var gNotes = [
     info: {
       title: 'Note',
       txt:
-        'I want this text note to be bigger then the others so im writing all of the text down and lets see how it goes',
+        'Talk with the wedding planer about the flowers arangments and photographer.',
     },
     style: { backgroundColor: '#FDCFE8', borderColor: '#FDCFE8' },
   },
