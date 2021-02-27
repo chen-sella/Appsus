@@ -1,3 +1,25 @@
 .note-txt h3 {
   font-family: roboto-bold;
 }
+
+.note-txt p {
+  margin: 10px;
+}
+
+/* .saveEdits {
+  margin-inline-start: 10px;
+  margin-block-start: 5px;
+} */
+
+.saveEdits-container{
+  height: 20px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}

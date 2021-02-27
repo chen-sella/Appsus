@@ -47,7 +47,7 @@
 
 .home-nav-link:hover {
   background-color: transparent;
-  border-color: #cbf0f8;
+  border: 1px solid #cbf0f8;
 }
 
 .email-display {

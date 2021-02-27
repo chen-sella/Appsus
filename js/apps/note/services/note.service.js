@@ -182,14 +182,15 @@ function changePinnState(noteId) {
   });
 }
 
-function updateTxt(txt, noteId, type) {
+function updateTxt(newNote, noteId, type) {
   return getNoteById(noteId).then((note) => {
     if (type === 'noteTxt') {
-      note.info.txt = txt;
+      note.info.txt = newNote.txt;
+      note.info.title = newNote.title;
     }
     if (type === 'noteTodos') {
-      note.info.title = txt.title;
-      note.info.todos = txt.todos;
+      note.info.title = newNote.title;
+      note.info.todos = newNote.todos;
     }
     return storageService.put(NOTE_KEY, note).then(() => {
       return storageService.query(NOTE_KEY);

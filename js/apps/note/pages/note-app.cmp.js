@@ -59,10 +59,10 @@ export default {
     });
   },
   mounted() {
-    eventBus.$on('updateTxt', (txt, noteId)=>{
-      console.log(txt);
+    eventBus.$on('updateTxt', (note, noteId)=>{
+      console.log(note);
       console.log(noteId);
-      this.updateTxt(txt, noteId, 'noteTxt');
+      this.updateTxt(note, noteId, 'noteTxt');
     })
     eventBus.$on('updateTodos', (noteTodos, noteId) =>{
       console.log(noteTodos.todos);

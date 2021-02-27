@@ -5,16 +5,33 @@ export default {
   props: ['info', 'id'],
   template: `
     <section class="note-txt">
-      <h3>{{info.title}}</h3>
-      <p contenteditable="true" ref="txtPara" class="note-txt" @keyup.esc="updateTxt">{{info.txt}}</p>
+      <div class="saveEdits-container">
+      <transition name="fade">
+          <div v-if="saveEdits" class="saveEdits" @click="updateTxt">
+            <i class="fas fa-save"></i>
+          </div>
+        </transition>
+      </div>
+      <h3 contenteditable="true" @click.stop="editNote" ref="txtTitle">{{info.title}}</h3>
+      <p contenteditable="true" ref="txtPara" class="note-txt" @click.stop="editNote">{{info.txt}}</p>
     </section>
         `,
   data() {
-    return {};
+    return {
+      saveEdits: null,
+    };
   },
   methods: {
     updateTxt() {
-      eventBus.$emit('updateTxt', this.$refs.txtPara.innerText, this.id);
+      console.log(this.$refs.txtTitle.innerText);
+      const title = this.$refs.txtTitle.innerText;
+      const txt = this.$refs.txtPara.innerText;
+      eventBus.$emit('updateTxt', {title, txt}, this.id);
+      this.saveEdits = null;
+    },
+    editNote() {
+      console.log('editing!');
+      this.saveEdits = true;
     },
   },
   computed: {},

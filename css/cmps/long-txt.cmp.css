@@ -1,6 +1,3 @@
-* {
-  box-sizing: border-box;
-}
 
 .long-text button {
   background-color: none;
@@ -8,4 +5,9 @@
   border-radius: 20%;
   cursor: pointer;
   margin-inline-start: 0.6rem;
+}
+
+.saveEdits{
+  margin-inline-start: 10px;
+  cursor: pointer;
 }

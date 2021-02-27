@@ -1,6 +1,19 @@
-.note-preview{
+.note-preview {
   border: 1px solid #8080809e;
   border-radius: 10px;
   break-inside: avoid;
   margin-block-end: 10px;
+}
+
+.note-controls-container {
+  height: 30px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }

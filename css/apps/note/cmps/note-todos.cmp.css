@@ -5,3 +5,16 @@
 .note-todos h3 {
   font-family: roboto-bold;
 }
+
+.saveEdits-container {
+  height: 20px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
