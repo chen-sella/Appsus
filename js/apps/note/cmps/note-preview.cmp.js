@@ -42,11 +42,6 @@ export default {
       return { backgroundColor: 'white', borderColor: '#8080809e' };
     },
   },
-  // mounted(){
-  //   eventBus.$on('editing', ()=>{
-  //     console.log('some one is editing');
-  //   })
-  // },
   components: {
     noteTxt,
     noteImg,

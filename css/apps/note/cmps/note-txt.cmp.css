@@ -6,13 +6,9 @@
   margin: 10px;
 }
 
-/* .saveEdits {
-  margin-inline-start: 10px;
-  margin-block-start: 5px;
-} */
-
-.saveEdits-container{
+.saveEdits-container {
   height: 20px;
+  color: #5c5c5cda;
 }
 
 .fade-enter-active,

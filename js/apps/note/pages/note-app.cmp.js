@@ -69,6 +69,9 @@ export default {
       console.log(noteTodos.title);
       this.updateTxt(noteTodos, noteId, 'noteTodos');
     })
+    eventBus.$on('updateImgTitle', (title, noteId)=>{
+      this.updateTxt(title, noteId, 'noteImg')
+    })
     eventBus.$on('makeAction', () => {
       console.log('msg was heard!');
       this.deleteNote(this.$route.params.noteId);

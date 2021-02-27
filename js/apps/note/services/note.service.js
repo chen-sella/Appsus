@@ -32,7 +32,7 @@ var gNotes = [
     type: 'noteImg',
     isPinned: false,
     info: {
-      url: 'img/Layer 2@1X.png',
+      url: 'img/vacation.jpg',
       title: 'My Perfect Vacation',
     },
     style: { backgroundColor: '#F28B83', borderColor: '#F28B83' },
@@ -56,7 +56,7 @@ var gNotes = [
     type: 'noteImg',
     isPinned: false,
     info: {
-      url: 'img/jordan-whitt-lvh5L46VWuA-unsplash.jpg',
+      url: 'img/cat.jpg',
       title: 'Cat',
     },
     style: { backgroundColor: '#FCBC02', borderColor: '#FCBC02' },
@@ -93,7 +93,7 @@ var gNotes = [
     type: 'noteImg',
     isPinned: false,
     info: {
-      url: 'img/jocelyn-morales-CO2VCtj40uc-unsplash.jpg',
+      url: 'img/plants.jpg',
       title: 'Good Morning',
     },
     style: { backgroundColor: 'white', borderColor: '#8080809e' },
@@ -191,6 +191,9 @@ function updateTxt(newNote, noteId, type) {
     if (type === 'noteTodos') {
       note.info.title = newNote.title;
       note.info.todos = newNote.todos;
+    }
+    if(type === 'noteImg'){
+      note.info.title = newNote;
     }
     return storageService.put(NOTE_KEY, note).then(() => {
       return storageService.query(NOTE_KEY);
