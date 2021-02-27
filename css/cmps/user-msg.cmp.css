@@ -1,10 +1,12 @@
 .user-msg {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
+  position: fixed;
+  top: 90px;
+  right: 10px;
   background-color: #212123;
   border-radius: 10px;
   width: 300px;
+  padding: 30px 10px;
+  
 }
 .user-msg p {
   color: white;
