@@ -139,6 +139,7 @@ export const emailService = {
   toggleEmailFolder,
   getFolders,
   updateIsRead,
+  removeFromTrash,
 };
 
 function getFolders() {
@@ -154,6 +155,18 @@ function updateIsRead(emailId, isToUnread) {
       return storageService.query(EMAIL_KEY);
     });
   });
+}
+
+function removeFromTrash(emailId) {
+  return getById(emailId).then((email) => {
+    email.folders.length = 0;
+    email.folders.push('inbox');
+    return storageService.put(EMAIL_KEY, email).then(() => {
+      return storageService.query(EMAIL_KEY).then((emails) => {
+        return emails;
+      });
+    });
+  })
 }
 
 function toggleEmailFolder(emailId, folderName) {
