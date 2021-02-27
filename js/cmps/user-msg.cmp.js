@@ -5,8 +5,8 @@ export default {
   template: `
     <section v-if="msg" class="user-msg flex space-between" :class="msg.type">
       <p>{{msg.txt}}</p>
-      <button v-if="msg.isAction" @click="doAction">{{msg.isAction}}</button>
-      <button @click="msg=null">x</button>
+      <button v-if="msg.isAction" class="msg-action" @click="doAction">{{msg.isAction}}</button>
+      <button class="del-btn" @click="msg=null">x</button>
     </section>    
   `,
   data() {

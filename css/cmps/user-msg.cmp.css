@@ -6,14 +6,15 @@
   border-radius: 10px;
   width: 300px;
   padding: 30px 10px;
-  
 }
 .user-msg p {
   color: white;
   margin-inline-start: 10px;
 }
 
-.success {
+.msg-action {
+  text-transform: uppercase;
+  font-family: roboto-bold;
   color: orange;
 }
 
@@ -21,6 +22,15 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
+}
+.user-msg .del-btn {
   color: white;
   margin-inline-end: 10px;
+}
+
+@media (max-width: 400px) {
+  .user-msg {
+    width: 250px;
+    padding: 20px 10px;
+  }
 }
