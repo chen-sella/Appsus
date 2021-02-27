@@ -8,7 +8,7 @@ export default {
   template: `
           <section class="email-list-container flex column">
             <section class="mobile-menu-section">
-              <a class="menu-hamburger-icon" href="#"><i class="fas fa-bars"></i></a>
+              <a class="menu-hamburger-icon" href="#" @click="menuClicked"><i class="fas fa-bars"></i></a>
               <email-filter class="email-filter-cmp-mobile" @strSortBy="sortByStr" @readSortRead="sortByRead"></email-filter>
             </section>
             <email-filter class="email-filter-cmp"@strSortBy="sortByStr" @readSortRead="sortByRead"></email-filter>
@@ -83,6 +83,10 @@ export default {
         this.emails = emails;
         this.mailsToShow();
       });
+    },
+    menuClicked() {
+      console.log('clicked the hamburger btn');
+      eventBus.$emit('clickedMenu');
     }  
   },
   watch: {

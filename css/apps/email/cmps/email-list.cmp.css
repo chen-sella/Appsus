@@ -27,6 +27,10 @@
 }
 
 @media (max-width: 740px) {
+  .email-list-container {
+    width: 100%;
+  }
+
   .email-filter-cmp {
     display: none;
   }

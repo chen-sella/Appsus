@@ -7,7 +7,8 @@ export default {
   name: 'emailApp',
   template: `
           <section class="email-app-container flex app-main main-container">
-            <section class="side-menu-container flex column">
+            <div v-if="isSideMenuOpen" class="main-screen" @click.stop="isSideMenuOpen = false"></div>
+            <section class="side-menu-container flex column" :style="onMobileStyle">
               <button class="compose-btn flex align-center" @click="compose = !compose"><i class="fas fa-plus compose-icon"></i>Compose</button>
               <email-side-nav :folders="folders"/>
             </section>
@@ -20,7 +21,17 @@ export default {
     return {
       folders: null,
       compose: null,
+      isSideMenuOpen: false,
+      isScreenShown: false,
     };
+  },
+  computed: {
+    onMobileStyle() {
+      if (!this.isSideMenuOpen) {
+        return {backgroundColor: 'red', left: -200 + 'px'}
+      }  
+    }
+
   },
   methods: {
     getFolders() {
@@ -42,6 +53,11 @@ export default {
     eventBus.$on('onAddMail', (newEmail) => {
       this.addNewMail(newEmail);
   });
+
+  eventBus.$on('clickedMenu', () => {
+    this.isSideMenuOpen = !this.isSideMenuOpen;
+    console.log('this.isSideMenuOpen',this.isSideMenuOpen);
+  })
   },
   components: {
     emailSideNav,
