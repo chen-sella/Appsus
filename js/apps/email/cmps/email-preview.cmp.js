@@ -48,7 +48,6 @@ export default {
       },
       setBackground() {
         console.log('this.email.style',this.email.style);
-        // return this.email.style;
         return {backgroundColor: this.email.style.backgroundColor,
                 border: this.email.style.borderColor};
       },

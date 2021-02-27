@@ -1,7 +1,6 @@
 import { eventBus } from '../../../services/event-bus.service.js';
 
 export default {
-  props:[],
   name: 'emailCompose',
   template: `
             <section class="email-compose-container flex column">
@@ -48,12 +47,9 @@ export default {
     }
   },
   methods: {
-
     save(newEmail) {
       this.newEmail.body = this.$refs.newEmailBody.innerText;
       eventBus.$emit('onAddMail', newEmail);
-      // this.$router.push(`/email/${this.folder}`)
-      // this.closeCompose();
     },
     openInputCc() {
       this.openCc = true;
@@ -70,8 +66,4 @@ export default {
       this.folder = this.$route.params.folder
       console.log('this.folder',this.folder);
   },
-  computed: {
-  
-  },
-  components: {},
 };

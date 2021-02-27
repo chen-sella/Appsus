@@ -54,7 +54,7 @@
   background: rgba(202, 202, 202, 0.493);
 }
 
-@media (max-width: 740px) {
+@media (max-width: 750px) {
   .email-preview-container .name-circle {
     min-width: 40px;
     height: 40px;

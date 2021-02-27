@@ -75,7 +75,7 @@ h4, p {
   margin-inline-end: 10px;
 }
 
-@media (max-width: 740px) {
+@media (max-width: 750px) {
   .header-info-container .name-circle {
     width: 40px;
     height: 40px;
