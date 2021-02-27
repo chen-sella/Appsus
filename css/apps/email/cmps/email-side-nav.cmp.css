@@ -2,12 +2,16 @@
     margin-top: 20px;
 }
 
+.folder-name-container{
+    display: flex;
+    align-items: center;
+}
+
 .folder-icon{
     color: rgba(161, 158, 158, 0.746);
 }
 
 .folder-name{
-    display: inline;
     margin-inline-start: 10px;
 }
 
