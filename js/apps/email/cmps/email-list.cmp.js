@@ -7,6 +7,10 @@ export default {
   name: 'emailList',
   template: `
           <section class="email-list-container flex column">
+            <section class="mobile-menu-section flex">
+              <a href="">Hamburger</a>
+              <email-filter @strSortBy="sortByStr" @readSortRead="sortByRead"></email-filter>
+            </section>
             <email-filter @strSortBy="sortByStr" @readSortRead="sortByRead"></email-filter>
             <ul v-if="emails" class="email-list">
               <li v-for="email in emailsToShow" :key="email.id" class="clean-list">

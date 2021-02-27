@@ -20,3 +20,9 @@
   color: #fcbc02;
   font-size: 1.2rem;
 }
+
+/* @media(max-width:740px){
+  .email-list-container{
+      width: 65%;
+  }
+} */

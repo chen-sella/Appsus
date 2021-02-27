@@ -31,3 +31,7 @@
 .email-side-nav-container .nav-link:focus{
     background-color: rgb(250, 115, 115);
 }
+
+@media(max-width:740px){
+    
+  }

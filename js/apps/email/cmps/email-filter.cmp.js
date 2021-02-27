@@ -3,7 +3,7 @@ export default {
     template: `
             <section class="email-filter-section flex">
               <input type="search" placeholder="Search mail" v-model="filterBy.strSearch" @input="searchByStr">
-              <select name="readSort" v-model="filterBy.readSearch" @change="sortByIsRead" value="All">
+              <select name="readSort" v-model="filterBy.readSearch" @change="sortByIsRead">
                 <option value="all">All</option>
                 <option value="read">Read</option>
                 <option value="unread">Unread</option>
