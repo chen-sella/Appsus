@@ -30,8 +30,13 @@
 
 .router-links-list li {
   margin: 0;
-  padding: 0;
+  padding: 10px;
   width: 50%;
   display: flex;
   justify-content: center;
 }
+
+.router-links-list li:hover{
+  background-color: rgba(219, 219, 219, 0.664);;
+  border-radius: 50%;
+} 

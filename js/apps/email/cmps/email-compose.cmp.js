@@ -22,7 +22,7 @@ export default {
                 <div class="flex column space-between">
                   <div contenteditable="true" ref="newEmailBody" class="textarea flex-grow"></div>
                   <div class="form-btns-container flex space-between align-center">
-                    <button class="save-btn">Save</button>
+                    <button class="save-btn">Send</button>
                     <button class="cancel-btn"><i class="fas fa-trash trash-icon"></i></button>
                   </div>
                 </div>
