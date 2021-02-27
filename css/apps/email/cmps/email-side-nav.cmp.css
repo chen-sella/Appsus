@@ -2,6 +2,19 @@
     margin-top: 20px;
 }
 
+.folder-name-container{
+    display: flex;
+    align-items: center;
+}
+
+.folder-icon{
+    color: rgba(161, 158, 158, 0.746);
+}
+
+.folder-name{
+    margin-inline-start: 10px;
+}
+
 .email-side-nav-container .nav-link {
     cursor: pointer;
     margin-block-end: 10px;
