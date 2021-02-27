@@ -11,6 +11,7 @@ export default {
               <button class="compose-btn flex align-center" @click="compose = !compose"><i class="fas fa-plus compose-icon"></i>Compose</button>
               <email-side-nav :folders="folders"/>
             </section>
+            <button class="compose-btn-mobile" @click="compose = !compose"><i class="fas fa-plus compose-icon"></i></button>
             <router-view></router-view>
             <email-compose v-if="compose" @onAddMail="addNewMail" @closeCompose="compose = false"></email-compose> 
           </section>  

@@ -1,6 +1,6 @@
 .side-menu-container {
   min-width: 200px;
-  box-shadow: 4px 5px 8px 0px rgba(117,117,117,0.75);
+  box-shadow: 4px 5px 8px 0px rgba(117, 117, 117, 0.75);
 
   /* background-color: rgb(207, 207, 207); */
 }
@@ -21,8 +21,28 @@
   font-size: 1.2rem;
 }
 
-/* @media(max-width:740px){
-  .email-list-container{
-      width: 65%;
+@media (max-width: 740px) {
+  .compose-btn {
+    display: none;
   }
-} */
+  .compose-btn-mobile {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+    border-radius: 40px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .email-app-container .compose-icon {
+    display: flex;
+    justify-content: center;
+  }
+}

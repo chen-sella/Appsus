@@ -10,14 +10,46 @@
   padding-inline-start: 0;
 }
 
-@media(max-width:1200px){
-  .email-list-container{
-      width: 70%;
+.mobile-menu-section {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .email-list-container {
+    width: 70%;
   }
 }
 
-@media(max-width:960px){
-  .email-list-container{
-      width: 65%;
+@media (max-width: 960px) {
+  .email-list-container {
+    width: 65%;
   }
+}
+
+@media (max-width: 740px) {
+  .email-filter-cmp {
+    display: none;
+  }
+
+  .email-filter-cmp-mobile {
+    width: 80%;
+  }
+
+  .email-list-container {
+    width: 65%;
+  }
+
+  .mobile-menu-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-hamburger-icon {
+    color: rgb(177, 177, 177);
+    font-size: 1.5rem;
+  }
+
+
 }
