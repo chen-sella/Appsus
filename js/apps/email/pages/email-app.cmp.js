@@ -28,9 +28,9 @@ export default {
     addNewMail(emailInfo) {
       emailService.createNewEmail(emailInfo)
       .then((emails) => {
-        console.log('emails',emails);
+        // console.log('emails',emails);
         this.compose = false;
-        console.log('heared');
+        // console.log('heared');
         eventBus.$emit('storageUpdated');
       })
     },

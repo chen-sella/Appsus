@@ -15,9 +15,7 @@ export default {
     methods: {
         setFilter(folder){
             this.$emit('filtered', folder);
-            eventBus.$emit('filtered', folder);
-            // this.$router.push(`/email/${folder}`);
-            // this.$route.params.folder = folder;
+            // eventBus.$emit('filtered', folder);
         }
     },
     computed: {},
