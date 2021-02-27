@@ -21,7 +21,7 @@ export default {
         this.$emit('strSortBy', strSearch);
       },
       sortByIsRead(readSearch) {
-        this.$emit('readSortBy', readSearch);
+        this.$emit('readSortRead', readSearch);
       }
     },
     computed: {},

@@ -33,7 +33,7 @@ export default {
     sortByStr(str) {
       console.log('sorting by str...');
     },
-    sortByStr(isRead) {
+    sortByRead(isRead) {
       console.log('sorting by isRead...');
     },
     mailsToShow() {
