@@ -76,7 +76,6 @@ export default {
         })
         .then((email) => {
           this.email = email
-          // this.folder = this.$route.params.folder;
           this.$router.push('/email/inbox');
         })
     }
