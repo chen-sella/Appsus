@@ -7,7 +7,7 @@ export default {
   name: 'emailList',
   template: `
           <section class="email-list-container flex column">
-            <email-filter></email-filter>
+            <email-filter @strSortBy="sortByStr" @readSortBy="sortByRead"></email-filter>
             <ul v-if="emails" class="email-list">
               <li v-for="email in emailsToShow" :key="email.id" class="clean-list">
                 <email-preview :email="email" @sendStarEvent="updateFolder" @click.native="openDetails(email.id)" :folder="folder"></email-preview>
@@ -29,6 +29,12 @@ export default {
         this.emails = emails;
         this.mailsToShow();
       });
+    },
+    sortByStr(str) {
+      console.log('sorting by str...');
+    },
+    sortByStr(isRead) {
+      console.log('sorting by isRead...');
     },
     mailsToShow() {
       const emailsToShow = this.emails.filter((email) => {
