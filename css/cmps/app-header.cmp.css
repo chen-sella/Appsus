@@ -1,16 +1,37 @@
 .app-header {
-  background-color: #FCBC02;
+  background-color: #fcbc02;
 }
 
 .header-content-container {
   height: 10vh;
 }
 
-.header-content-container .nav-link {
+.header-content-container h1 {
   margin: 0;
-  margin-inline-start: 20px;
 }
 
-.header-content-container h1{
+.nav-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.router-links-list {
+  background-color: #fffefe;
+  position: absolute;
+  flex-wrap: wrap;
+  top: 33px;
+  right: 0px;
+  width: 130px;
+  height: 130px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 1px #6D6D6D;
+}
+
+.router-links-list li {
   margin: 0;
+  padding: 0;
+  width: 50%;
+  display: flex;
+  justify-content: center;
 }

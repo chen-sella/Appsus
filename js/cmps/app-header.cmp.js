@@ -7,17 +7,45 @@ export default {
                   <h1>Appsus</h1>
               </div>
               <nav class="flex">
-                  <router-link class="nav-link" to="/">Home</router-link>
-                  <router-link class="nav-link" to="/email">Email</router-link>
-                  <router-link class="nav-link" to="/keep">keep</router-link>
+                  <div class="nav-container" @click="toggleNav">
+                    <i class="fas fa-th fa-2x"></i>
+                    <ul v-if="nav" class="router-links-list clean-list flex align-center">
+                      <li @click="toggleNav">
+                      <router-link class="nav-link" to="/">
+                        <i class="fas fa-home fa-2x"></i>
+                      </router-link>
+                      </li>
+                      <li @click="toggleNav">
+                      <router-link class="nav-link" to="/email">
+                        <i class="fas fa-envelope fa-2x"></i>
+                      </router-link>
+                      </li>
+                      <li @click="toggleNav">
+                      <router-link class="nav-link" to="/keep">
+                        <i class="fas fa-sticky-note fa-2x"></i>
+                      </router-link>
+                      </li>
+                      <li @click="toggleNav">
+                        <router-link class="nav-link" to="/about">
+                        <i class="fas fa-info fa-2x"></i>
+                        </router-link>
+                      </li>
+                    </ul>
+                  </div>
               </nav>
           </div>
           </header>    
       `,
   data() {
-    return {};
+    return {
+      nav:null,
+    };
   },
-  methods: {},
+  methods: {
+    toggleNav(){
+      this.nav = !this.nav
+    }
+  },
   computed: {},
   components: {},
 };
