@@ -7,6 +7,12 @@
   box-shadow: 0px 0px 4px 1px rgb(199, 196, 196);
 }
 
+.type-controllers {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 110px;
+}
+
 .note-create input {
   border: none;
   font-size: 18px;
