@@ -13,6 +13,15 @@ export default {
                         </p>
                     </div>
                 </div>
+                <div class="about-content-container flex align-center">
+                    <div class="abount-text flex column">
+                        <p class="about-name">Leetal Rivlin-Tal</p>
+                        <p class="about-details">My name is Leetal, I'm 35 Years Old and i live in Raanana, Israel. I have a BA in industrial
+                            design but after working years in the industry my heart pulled me towards Web Design. 
+                        </p>
+                    </div>
+                    <img class="about-img second-img align-center" src="img/Leetal.jpeg">
+                </div>
             </section>
     `,
 };

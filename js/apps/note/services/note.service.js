@@ -69,7 +69,7 @@ var gNotes = [
       title: 'Chores for Leetal:',
       todos: [
         { txt: 'Take put the dogs', doneAt: 187111111 },
-        { txt: 'Do not spill coffe', doneAt: null },
+        { txt: 'Do not spill coffee', doneAt: null },
         { txt: 'Rest', doneAt: null },
         { txt: 'Be Amazing', doneAt: 187111111 },
         { txt: 'Send some emails', doneAt: null },

@@ -1,5 +1,7 @@
 .about{
     margin-block-start: 40px;
+    background-color: #f6f0e80d;
+
 }
 
 .about h2{
@@ -8,17 +10,35 @@
 }
 
 .abount-text{
-    margin-inline-start: 20px;
+    margin-inline-start: 10px;
+    margin-inline-end: 10px;
 }
 
 .about-name{
     font-size: 24px;
 }
+
 .about-img{
   width: 300px;
   border-radius: 50%;
+  margin-inline-start: 5px;
+  margin-inline-end: 5px;
+  
 }
 
 .about-content-container{
     margin-block-start: 40px;
+}
+
+@media (max-width:750px){
+    .about-content-container{
+        flex-direction: column;
+    }
+    .about-img{
+        margin-block-end: 10px;
+
+    }
+    .second-img{
+        order: -1;
+    }
 }

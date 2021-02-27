@@ -64,3 +64,16 @@ a:hover {
         max-width: 700px;
     }
 }
+
+@media (max-width: 750px){
+    .main-container{
+        max-width: 500px;
+
+    }
+}
+@media (max-width: 550px){
+    .main-container{
+        max-width: 300px;
+
+    }
+}
