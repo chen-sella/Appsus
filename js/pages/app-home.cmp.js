@@ -19,7 +19,7 @@ export default {
                     </p>
                   </div>
                    <video width="95%" controls autoplay>
-                    <source src="/img/Appsus (3).mp4" type="video/mp4">
+                    <source src="img/Appsus (3).mp4" type="video/mp4">
                   </video>
                 <router-link class="home-nav-link" to="/email">Email</router-link>
                 </section>
