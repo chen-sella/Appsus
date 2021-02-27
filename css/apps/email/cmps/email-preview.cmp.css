@@ -41,6 +41,10 @@
   margin-bottom: 1rem;
 }
 
+.time-container {
+  min-width: 80px;
+}
+
 .bold {
   font-weight: bold;
   font-family: roboto-bold;

@@ -13,7 +13,7 @@ export default {
                   <long-text v-else-if="isLongText" :txt="email.body" :length="length"/>
                 </div>
               </div>
-              <div class="flex column space-between align-center">
+              <div class="time-container flex column space-between align-center">
               <p class="email-time" :class="toggleBold">{{formattedTime}}</p>
               <img :src="changeStar" class="star-img" @click.stop="sendStarEvent">
               </div>
