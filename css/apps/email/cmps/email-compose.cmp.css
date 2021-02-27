@@ -80,3 +80,9 @@ form button {
   font-size: 1.3rem;
   color: rgb(134, 134, 134);
 }
+
+@media (max-width: 740px) {
+  .email-compose-container {
+    width: 340px;
+  }
+}

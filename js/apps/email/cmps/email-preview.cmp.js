@@ -22,7 +22,7 @@ export default {
     data() {
       return {
         isLongText: false,
-        length: 40,
+        length: 30,
         folderToToggle: null,
       };
     },

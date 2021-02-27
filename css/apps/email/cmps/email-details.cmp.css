@@ -74,3 +74,11 @@ h4, p {
 .body-container button:first-of-type {
   margin-inline-end: 10px;
 }
+
+@media (max-width: 740px) {
+  .header-info-container .name-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}

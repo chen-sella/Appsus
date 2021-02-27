@@ -28,7 +28,9 @@
 
 @media (max-width: 740px) {
   .email-list-container {
-    width: 100%;
+    margin: auto;
+    width: 90%;
+    min-height: 80vh;
   }
 
   .email-filter-cmp {
@@ -37,10 +39,6 @@
 
   .email-filter-cmp-mobile {
     width: 80%;
-  }
-
-  .email-list-container {
-    width: 65%;
   }
 
   .mobile-menu-section {

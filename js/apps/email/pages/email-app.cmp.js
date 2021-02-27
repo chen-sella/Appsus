@@ -27,8 +27,8 @@ export default {
   },
   computed: {
     onMobileStyle() {
-      if (!this.isSideMenuOpen) {
-        return {backgroundColor: 'red', left: -200 + 'px'}
+      if (this.isSideMenuOpen) {
+        return {left: 0 + 'px'}
       }  
     }
 

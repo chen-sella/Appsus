@@ -32,6 +32,10 @@
   cursor: pointer;
 }
 
+.compose-btn-mobile {
+  display: none;
+}
+
 @media (max-width: 740px) {
   .compose-btn {
     display: none;
@@ -61,8 +65,8 @@
 
   .side-menu-container {
     position: fixed;
-    left: 0;
+    left: -200px;
     height: 100vh;
-    background-color: #f6f0e8;
+    background-color: #e3e3e3;
   }
 }

@@ -196,7 +196,7 @@ function createNewEmail(composedMail) {
   composedMail.mailInfo.sender = 'David Cohen';
   composedMail.isRead = false;
   composedMail.sentAt = Date.now();
-  composedMail.color = utilService.getRandBackground();
+  composedMail.style = utilService.getRandColor();
   composedMail.folders = ['inbox'];
 
   console.log('new full email:', composedMail);
