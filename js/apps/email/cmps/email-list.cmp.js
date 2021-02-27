@@ -7,7 +7,7 @@ export default {
   name: 'emailList',
   template: `
           <section class="email-list-container flex column">
-            <email-filter @strSortBy="sortByStr" @readSortBy="sortByRead"></email-filter>
+            <email-filter @strSortBy="sortByStr" @readSortRead="sortByRead"></email-filter>
             <ul v-if="emails" class="email-list">
               <li v-for="email in emailsToShow" :key="email.id" class="clean-list">
                 <email-preview :email="email" @sendStarEvent="updateFolder" @click.native="openDetails(email.id)" :folder="folder"></email-preview>
@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       emails: null,
-      folder: 'inbox',
+      folder: null,
       emailsToShow: null,
       currEmailId: null,
     };
@@ -32,15 +32,34 @@ export default {
     },
     sortByStr(str) {
       console.log('sorting by str...');
+      const searchStr = str.toLowerCase();
+      const filteredEmails = this.emails.filter(email => {
+        return (email.mailInfo.sender.toLowerCase().includes(searchStr) ||
+                email.subject.toLowerCase().includes(searchStr) ||
+                email.body.toLowerCase().includes(searchStr))
+      })
+      console.log('filteredEmails by str:',filteredEmails);
+      this.emailsToShow = filteredEmails;
     },
     sortByRead(isRead) {
-      console.log('sorting by isRead...');
+      let emailsToShow;
+      if (isRead === 'all') {
+        return this.emailsToShow = this.emails;
+      }
+      else if (isRead === 'read') isRead = true;
+      else if (isRead === 'unread') isRead = false;
+      emailsToShow = this.emails.filter((email) => {
+        return email.isRead === isRead;
+      });
+      
+      console.log('emailsToShow from isRead:',this.emailsToShow);
+      this.emailsToShow = emailsToShow;
     },
     mailsToShow() {
-      const emailsToShow = this.emails.filter((email) => {
+      const showByFolder = this.emails.filter((email) => {
         return email.folders.includes(this.folder);
       });
-      this.emailsToShow = emailsToShow;
+      this.emailsToShow = showByFolder;
     },
     openDetails(emailId) {
       this.$router.push(`/email/${this.folder}/${emailId}`);
@@ -65,16 +84,15 @@ export default {
   watch: {
     '$route.params.folder'(folder) {
       this.folder = folder;
-      console.log('this.folder',this.folder);
       this.mailsToShow();
     },
   },
   created() {
+    this.folder = (this.$route.params.folder) ? this.$route.params.folder : 'inbox';
     this.loadEmails();
   },
   mounted() {
     eventBus.$on('storageUpdated', () => {
-      console.log('got new email');
       this.loadEmails();
     })
   },

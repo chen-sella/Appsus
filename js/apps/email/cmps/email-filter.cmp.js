@@ -2,8 +2,8 @@ export default {
     name: 'emailFilter',
     template: `
             <section class="email-filter-section flex">
-              <input type="search" placeholder="Search mail" v-model="strSearch" @change="searchByStr">
-              <select name="readSort" v-model="readSearch" @change="sortByIsRead">
+              <input type="search" placeholder="Search mail" v-model="filterBy.strSearch" @input="searchByStr">
+              <select name="readSort" v-model="filterBy.readSearch" @change="sortByIsRead" value="All">
                 <option value="all">All</option>
                 <option value="read">Read</option>
                 <option value="unread">Unread</option>
@@ -12,16 +12,19 @@ export default {
         `,
     data() {
       return {
-        strSearch: '',
-        readSearch: '',
-      };
+        filterBy: {
+          strSearch: '',
+          readSearch: '',
+        },
+      }
     },
     methods: {
-      searchByStr(strSearch) {
-        this.$emit('strSortBy', strSearch);
+      searchByStr() {
+        this.$emit('strSortBy', this.filterBy.strSearch);
       },
-      sortByIsRead(readSearch) {
-        this.$emit('readSortRead', readSearch);
+      sortByIsRead() {
+        console.log('Im sorting by:',this.filterBy.readSearch);
+        this.$emit('readSortRead', this.filterBy.readSearch);
       }
     },
     computed: {},
