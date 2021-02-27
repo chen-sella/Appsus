@@ -15,7 +15,7 @@ var gEmails = [
     body: 'How are you? Have a nice day',
     isRead: false,
     sentAt: Date.now(),
-    color: utilService.getRandBackground(),
+    style: utilService.getRandColor(),
     folders: ['inbox', 'starred'],
   },
   {
@@ -31,7 +31,7 @@ var gEmails = [
       'Hi there how are you today? I was wondering if you can please take the pages and show them to your boss, that will be amazing! thanks a lot! see you soon!',
     isRead: true,
     sentAt: Date.now(),
-    color: utilService.getRandBackground(),
+    style: utilService.getRandColor(),
     folders: ['inbox'],
   },
   {
@@ -46,7 +46,7 @@ var gEmails = [
     body: 'Let me know when is the meeting',
     isRead: false,
     sentAt: Date.now(),
-    color: utilService.getRandBackground(),
+    style: utilService.getRandColor(),
     folders: ['sent', 'starred'],
   },
   {
@@ -62,7 +62,7 @@ var gEmails = [
       'Let me know when is the meeting I will try to get there on time! If not please contact them and let them know.',
     isRead: true,
     sentAt: Date.now(),
-    color: utilService.getRandBackground(),
+    style: utilService.getRandColor(),
     folders: ['trash'],
   },
   {
@@ -77,7 +77,7 @@ var gEmails = [
     body: 'How are you? Have a nice day',
     isRead: false,
     sentAt: Date.now(),
-    color: utilService.getRandBackground(),
+    style: utilService.getRandColor(),
     folders: ['inbox', 'starred'],
   },
   {
@@ -92,7 +92,7 @@ var gEmails = [
     body: 'Let me know when is the meeting',
     isRead: true,
     sentAt: Date.now(),
-    color: utilService.getRandBackground(),
+    style: utilService.getRandColor(),
     folders: ['inbox'],
   },
   {
@@ -107,7 +107,7 @@ var gEmails = [
     body: 'Let me know when is the meeting',
     isRead: false,
     sentAt: Date.now(),
-    color: utilService.getRandBackground(),
+    style: utilService.getRandColor(),
     folders: ['sent', 'starred'],
   },
   {
@@ -123,7 +123,7 @@ var gEmails = [
       'Hi there how are you today? I was wondering if you can please take the pages and show them to your boss, that will be amazing! thanks a lot! see you soon!',
     isRead: true,
     sentAt: Date.now(),
-    color: utilService.getRandBackground(),
+    style: utilService.getRandColor(),
     folders: ['trash'],
   },
 ];
@@ -139,7 +139,6 @@ export const emailService = {
   toggleEmailFolder,
   getFolders,
   updateIsRead,
-  onDeleteMail
 };
 
 function getFolders() {
@@ -157,15 +156,6 @@ function updateIsRead(emailId, isToUnread) {
   });
 }
 
-function onDeleteMail(emailId) {
-  console.log('going to delete...');
-  // toggleEmailFolder(emailId,'trash')
-  // .then(() => getById(emailId))
-  // .then(email => {
-  //   const copiedMail = email
-  // })
-}
-
 function toggleEmailFolder(emailId, folderName) {
   return getById(emailId).then((email) => {
     if (email.folders.includes('trash')) return; 
@@ -175,6 +165,9 @@ function toggleEmailFolder(emailId, folderName) {
       });
       email.folders.splice(folderIdx, 1);
     } else {
+      if (folderName === 'trash') {
+        email.folders.length = 0;
+      }
       email.folders.push(folderName);
     }
     return storageService.put(EMAIL_KEY, email).then(() => {

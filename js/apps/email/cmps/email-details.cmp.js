@@ -57,24 +57,21 @@ export default {
       });
     },
     deleteMail() {
-      return emailService
-        .toggleEmailFolder(this.emailId, 'trash')
+      return emailService.toggleEmailFolder(this.emailId, 'trash')
         .then(() => {
           emailService.getById(this.emailId);
         })
-        .then((email) => (this.email = email))
-        .then(() => {
-          return emailService.remove(this.emailId)
-          .then(() => {
-            this.folder = this.$route.params.folder;
-            this.$router.push(`/email/${this.folder}`);
-          })
-        });
+        .then((email) => {
+          this.email = email
+          this.folder = this.$route.params.folder;
+          this.$router.push(`/email/${this.folder}`);
+        })
     },
   },
   computed: {
     goBack() {
       this.folder = this.$route.params.folder;
+      console.log(this.$route.params.folder);
       return `/email/${this.folder}`;
     },
     setBackground() {

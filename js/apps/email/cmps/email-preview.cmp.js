@@ -1,5 +1,4 @@
 import longText from '../../../cmps/long-text.cmp.js';
-import { eventBus } from '../../../services/event-bus.service.js';
 export default {
     name: 'emailPreview',
     props: ['email', 'folder'],
@@ -47,7 +46,10 @@ export default {
         return { 'showBcg': !this.email.isRead };
       },
       setBackground() {
-        return {backgroundColor: this.email.color};
+        console.log('this.email.style',this.email.style);
+        // return this.email.style;
+        return {backgroundColor: this.email.style.backgroundColor,
+                border: this.email.style.borderColor};
       },
       nameInitials() {
         const name = this.email.mailInfo.sender;

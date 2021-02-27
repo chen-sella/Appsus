@@ -2,10 +2,9 @@ export const utilService = {
   getRandId,
   saveToStorage,
   loadFromStorage,
-  getRandomColor,
   getRandomIntInclusive,
   getColors,
-  getRandBackground
+  getRandColor
 };
 
 var gColors = [
@@ -42,19 +41,10 @@ function getRandId(length = 11) {
   return txt;
 }
 
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
-function getRandBackground() {
+function getRandColor() {
   const colorIdx = getRandomIntInclusive(0, 11);
-  const bgc = gColors[colorIdx].backgroundColor;
-  return bgc;
+  const color = gColors[colorIdx];
+  return color;
 }
 
 function getRandomIntInclusive(min, max) {
