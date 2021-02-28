@@ -36,7 +36,7 @@ input[name='upload-file'] {
 .fade-save-enter-active {
   transition: opacity 0.5s;
 }
-.fade-save-enter{
+.fade-save-enter {
   opacity: 0;
 }
 
@@ -49,7 +49,9 @@ input[name='upload-file'] {
 @media (max-width: 550px) {
   .type-controllers {
     font-size: 12px;
+    max-width: 100px;
   }
+
   .note-create input {
     font-size: 14px;
     min-width: 200px;

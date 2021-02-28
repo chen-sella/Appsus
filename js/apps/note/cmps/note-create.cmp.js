@@ -21,7 +21,7 @@ export default {
         `,
   data() {
     return {
-      type: null,
+      type: 'noteTxt',
       note: null,
       txt: null,
       title: null,
@@ -52,12 +52,12 @@ export default {
       console.log(this.note);
       this.$emit('newNote', this.note);
       this.txt = null;
-      (this.title = null), (this.type = null);
+      (this.title = null), (this.type = 'noteTxt');
     },
   },
   computed: {
     flaceHolder() {
-      if (!this.type) return 'Take a note...';
+      // if (!this.type) return 'Take a note...';
       if (this.type === 'noteTxt') return 'Enter text...';
       if (this.type === 'noteImg') return 'Enter image URL...';
       if (this.type === 'noteTodos') return 'Enter comma separeted list...';
