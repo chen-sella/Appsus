@@ -57,11 +57,12 @@ export default {
   },
   computed: {
     flaceHolder() {
-      // if (!this.type) return 'Take a note...';
       if (this.type === 'noteTxt') return 'Enter text...';
       if (this.type === 'noteImg') return 'Enter image URL...';
       if (this.type === 'noteTodos') return 'Enter comma separeted list...';
     },
   },
-  components: {},
+  created(){
+    this.note = noteService.newNote('noteTxt');
+  }
 };
