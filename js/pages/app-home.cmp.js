@@ -10,7 +10,7 @@ export default {
                     </p>
                   </div>
                   <img src="img/keep-preview.png">
-                  <router-link class="home-nav-link" to="/keep">keep</router-link>
+                  <router-link class="home-nav-link" to="/keep">Keep</router-link>
                 </section>
                 <section class="email-display flex column align-center">
                   <div>

@@ -197,7 +197,7 @@ function createNewEmail(composedMail) {
   composedMail.isRead = false;
   composedMail.sentAt = Date.now();
   composedMail.style = utilService.getRandColor();
-  composedMail.folders = ['inbox'];
+  composedMail.folders = ['inbox', 'sent'];
 
   console.log('new full email:', composedMail);
   return storageService.post(EMAIL_KEY, composedMail).then(() => {
