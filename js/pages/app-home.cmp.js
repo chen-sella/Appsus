@@ -14,8 +14,8 @@ export default {
                 </section>
                 <section class="email-display flex column align-center">
                   <div>
-                    <p>Stay in touch with you loved ones. <br>
-                        Instantly compose new messages and mange your data.<br>
+                    <p>Stay in touch with your loved ones. <br>
+                        Instantly compose new messages and manage your data.<br>
                     </p>
                   </div>
                    <video width="95%" controls autoplay>
