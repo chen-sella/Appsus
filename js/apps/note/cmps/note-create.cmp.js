@@ -21,7 +21,7 @@ export default {
         `,
   data() {
     return {
-      type: 'noteTxt',
+      type: null,
       note: null,
       txt: null,
       title: null,
